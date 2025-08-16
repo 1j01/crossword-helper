@@ -15,7 +15,7 @@ class Cell:
 	barRight: bool = False
 	barBottom: bool = False
 
-def generate_rebus(letters_per_cell: int, max_word_length: int, min_chunk_usage: int):
+def generate_rebus(letters_per_cell: int, max_word_length: int, min_chunk_usage: int, max_placement_attempts: int, max_words: int):
 	chunked_words: dict[str, list[str]] = dict()
 	words_using_chunk: dict[str, set[str]] = defaultdict(set)
 	chunk_counts: Counter[str] = Counter()
@@ -60,7 +60,8 @@ def generate_rebus(letters_per_cell: int, max_word_length: int, min_chunk_usage:
 			connections.append(((i, 0), (i + 1, 0)))
 
 	# Add more words
-	for _ in range(100): # TODO: options to control generation limits
+	words_placed = 0
+	for _ in range(max_placement_attempts):
 		# Pick a random cell to branch off from
 		cell = choice(cells)
 		# Pick a random word that can overlap this cell
@@ -100,6 +101,10 @@ def generate_rebus(letters_per_cell: int, max_word_length: int, min_chunk_usage:
 			cells.extend(cells_to_place)
 			for i in range(len(positions) - 1):
 				connections.append((positions[i], positions[i + 1]))
+
+			words_placed += 1
+			if words_placed >= max_words:
+				break
 
 	# Calculate bars
 	for cell in cells:
