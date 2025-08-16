@@ -21,7 +21,7 @@ pip install -r requirements.txt
 To run the CLI, execute the following command:
 
 ```bash
-python src/cli.py
+python -m src.cli
 ```
 
 ## License

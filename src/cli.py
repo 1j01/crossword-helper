@@ -1,5 +1,6 @@
 import argparse
-from logic import find_similar_words, generate_rebus
+from .logic import find_similar_words, generate_rebus
+from .render import render_grid
 
 def main():
     parser = argparse.ArgumentParser(description='Crossword Helper CLI')
@@ -15,6 +16,8 @@ def main():
     # generate-rebus subcommand
     rebus_parser = subparsers.add_parser('generate-rebus', help='Generate rebus grid')
     rebus_parser.add_argument('letters_per_cell', type=int, help='Number of letters per cell')
+    rebus_parser.add_argument('max_word_length', type=int, help='Maximum word length')
+    rebus_parser.add_argument('min_chunk_usage', type=int, help='Minimum number of usages of a span of letters in the dictionary to be considered for inclusion')
 
     args = parser.parse_args()
 
@@ -23,8 +26,8 @@ def main():
         for pair in word_pairs:
             print(pair)
     elif args.command == 'generate-rebus':
-        grid = generate_rebus(args.letters_per_cell)
-        print(grid)
+        cells = generate_rebus(args.letters_per_cell, args.max_word_length, args.min_chunk_usage)
+        render_grid(cells)
 
 if __name__ == '__main__':
     main()
