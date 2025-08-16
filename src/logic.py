@@ -71,7 +71,7 @@ class Cell:
 	barRight: bool = False
 	barBottom: bool = False
 
-def generate_rebus(letters_per_cell: int, max_word_length: int, min_chunk_usage: int, max_placement_attempts: int, max_words: int) -> list[Cell]:
+def generate_puzzle(letters_per_cell: int, max_word_length: int, min_chunk_usage: int, max_placement_attempts: int, max_words: int) -> list[Cell]:
 	chunked_words: dict[str, list[str]] = dict()
 	words_using_chunk: dict[str, set[str]] = defaultdict(set)
 	chunk_counts: Counter[str] = Counter()

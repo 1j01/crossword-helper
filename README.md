@@ -22,14 +22,14 @@ pip install -r requirements.txt
 To generate a crossword, try running the following command:
 
 ```bash
-python -m src.cli generate-rebus --max-words 100 --letters-per-cell 3 --format html >xw.html
+python -m src.cli gen-puzzle --max-words 100 --letters-per-cell 3 --format html >xw.html
 ```
 
 Then open xw.html in your browser.
 
 See help for more options:
 ```bash
-python -m src.cli generate-rebus --help
+python -m src.cli gen-puzzle --help
 ```
 
 To find superpuzzitions:
