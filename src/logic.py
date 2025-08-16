@@ -1,7 +1,8 @@
 from collections import Counter, defaultdict
 from dataclasses import dataclass
-from random import choice
+from random import choice, choices
 from .dictionary import words
+from math import hypot
 
 def find_similar_words(length, letter1, letter2, exactly_one_different=False):
 	# Placeholder implementation
@@ -63,7 +64,10 @@ def generate_rebus(letters_per_cell: int, max_word_length: int, min_chunk_usage:
 	words_placed = 0
 	for _ in range(max_placement_attempts):
 		# Pick a random cell to branch off from
-		cell = choice(cells)
+		# Preferably branch off of cells closer to the origin, to favor a more compact layout
+		# TODO: try other shapes, hard limits
+		weights = [1 / (hypot(cell.position[0], cell.position[1]) + 1) for cell in cells]
+		cell = choices(cells, weights=weights, k=1)[0]
 		# Pick a random word that can overlap this cell
 		word_to_place = choice(list(words_using_chunk[cell.letters]))
 		chunks_to_place = chunked_words[word_to_place]
