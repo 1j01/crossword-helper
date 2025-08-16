@@ -71,7 +71,8 @@ def generate_rebus(letters_per_cell: int, max_word_length: int, min_chunk_usage:
 		if not matching_indices:
 			raise ValueError(f"No matching indices found for '{cell.letters}' in '{word_to_place}'")
 		matching_index = choice(matching_indices)
-		# TODO: be smarter about placement direction, maybe just try both in one iteration
+		# TODO: prevent words running together like portmanteaus
+		# (and maybe try both orientations in one iteration of cell/word picking for efficiency)
 		down = choice([True, False])
 
 		cells_to_place: list[Cell] = []
@@ -83,9 +84,9 @@ def generate_rebus(letters_per_cell: int, max_word_length: int, min_chunk_usage:
 			# if i == matching_index:
 			# 	continue
 			if down:
-				cells_to_place.append(Cell(position=(cell.position[0], cell.position[1] + i), letters=chunk))
+				cells_to_place.append(Cell(position=(cell.position[0], cell.position[1] + i - matching_index), letters=chunk))
 			else:
-				cells_to_place.append(Cell(position=(cell.position[0] + i, cell.position[1]), letters=chunk))
+				cells_to_place.append(Cell(position=(cell.position[0] + i - matching_index, cell.position[1]), letters=chunk))
 
 		# Check for collisions
 		collision = False
