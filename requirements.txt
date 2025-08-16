@@ -1,0 +1,4 @@
+# click==8.2.1
+# nltk==3.9.1
+# scikit-learn==1.7.1
+# requests==2.32.4
