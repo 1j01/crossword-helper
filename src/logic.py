@@ -76,8 +76,7 @@ def generate_rebus(letters_per_cell: int, max_word_length: int, min_chunk_usage:
 		if not matching_indices:
 			raise ValueError(f"No matching indices found for '{cell.letters}' in '{word_to_place}'")
 		matching_index = choice(matching_indices)
-		# TODO: prevent words running together like portmanteaus
-		# (and maybe try both orientations in one iteration of cell/word picking for efficiency)
+		# TODO: (maybe try both orientations in one iteration of cell/word picking for efficiency)
 		down = choice([True, False])
 
 		cells_to_place: list[Cell] = []
@@ -92,6 +91,31 @@ def generate_rebus(letters_per_cell: int, max_word_length: int, min_chunk_usage:
 			positions.append(position)
 			if i != matching_index:
 				cells_to_place.append(Cell(position=position, letters=chunk))
+
+		# Prevent words running together like portmanteaus
+		# Check for connections between the first position and the cell before it (left or up)
+		before_first = (
+			positions[0][0] - (0 if down else 1),
+			positions[0][1] - (1 if down else 0)
+		)
+		if any(
+			(connection[0] == before_first and connection[1] == positions[0]) or
+			(connection[1] == before_first and connection[0] == positions[0])
+			for connection in connections
+		):
+			continue
+		# Check for connections between the last position and the cell after it (right or down)
+		after_last = (
+			positions[-1][0] + (0 if down else 1),
+			positions[-1][1] + (1 if down else 0)
+		)
+		if any(
+			(connection[0] == after_last and connection[1] == positions[-1]) or
+			(connection[1] == after_last and connection[0] == positions[-1])
+			for connection in connections
+		):
+			continue
+
 
 		# Check for collisions
 		collision = False
