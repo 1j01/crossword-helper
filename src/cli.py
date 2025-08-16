@@ -1,5 +1,6 @@
 import argparse
-from .logic import find_superpuzzitions, generate_puzzle
+from .generate_puzzle import generate_puzzle
+from .superpuzzition import find_superpuzzitions
 from .render import render_grid_ascii, render_grid_html
 
 def main():

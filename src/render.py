@@ -1,5 +1,5 @@
 
-from .logic import Cell
+from .generate_puzzle import Cell
 
 
 def render_grid_ascii(cells: list[Cell]):
