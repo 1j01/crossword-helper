@@ -20,7 +20,7 @@ def render_grid(cells: list[Cell]):
 		for x in range(min_x, max_x + 1):
 			cell = next((c for c in cells if c.position == (x, y)), None)
 			if cell and cell.barBottom:
-				print("—" * max_cell_width, end=" ")
+				print("-" * max_cell_width, end=" ")
 			# elif cell:
 			# 	print(" " * max_cell_width, end=" ")
 			# else:
