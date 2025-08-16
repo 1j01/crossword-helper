@@ -30,7 +30,7 @@ def main():
         target_letters = [l.strip() for l in args.letters]
         pairs = find_superpuzzitions(args.length, target_letters, args.position, args.exactly_one_different)
         for pair in pairs:
-            print(pair[0] + " / " + pair[1])
+            print(pair[0] + " / " + pair[1] + " (score: " + f"{pair[2]:.4f}" + ")")
     elif args.command == 'gen-puzzle':
         cells = generate_puzzle(args.letters_per_cell, args.max_word_length, args.min_chunk_usage, args.max_placement_attempts, args.max_words)
         if args.format == 'ascii':
