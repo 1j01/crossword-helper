@@ -49,12 +49,15 @@ def generate_rebus(letters_per_cell: int, max_word_length: int, min_chunk_usage:
 
 	# Build a grid
 	cells: list[Cell] = []
+	connections: list[tuple[tuple[int, int], tuple[int, int]]] = []
 	# Start with a random word
 	allowed_words = list(chunked_words.keys())
 	start_word = choice(allowed_words)
 	start_chunks = chunked_words[start_word]
 	for i, chunk in enumerate(start_chunks):
 		cells.append(Cell(position=(i, 0), letters=chunk))
+		if i < len(start_chunks) - 1:
+			connections.append(((i, 0), (i + 1, 0)))
 
 	# Add more words
 	for _ in range(100): # TODO: options to control generation limits
@@ -73,8 +76,12 @@ def generate_rebus(letters_per_cell: int, max_word_length: int, min_chunk_usage:
 
 		cells_to_place: list[Cell] = []
 		for i, chunk in enumerate(chunks_to_place):
-			if i == matching_index:
-				continue
+			# Include the overlapped chunk to simplify iteration for adding connections
+			# Complicates adding the cells though (if we make sure to avoid duplicating the overlapped cell)
+			# TODO: instead just keep track of cells to place and positions of the word separately
+			# Cells to place can exclude the overlapped cell, and the positions can include it.
+			# if i == matching_index:
+			# 	continue
 			if down:
 				cells_to_place.append(Cell(position=(cell.position[0], cell.position[1] + i), letters=chunk))
 			else:
@@ -88,7 +95,15 @@ def generate_rebus(letters_per_cell: int, max_word_length: int, min_chunk_usage:
 				break
 
 		if not collision:
-			cells.extend(cells_to_place)
+			# Add the new cells (excluding the overlapped cell) and connections
+			cells.extend([new_cell for new_cell in cells_to_place if new_cell.position != cell.position])
+			for i in range(len(cells_to_place) - 1):
+				connections.append((cells_to_place[i].position, cells_to_place[i + 1].position))
+
+	# Calculate bars
+	for cell in cells:
+		cell.barRight = not any(connection[0] == cell.position and connection[1] == (cell.position[0] + 1, cell.position[1]) for connection in connections)
+		cell.barBottom = not any(connection[0] == cell.position and connection[1] == (cell.position[0], cell.position[1] + 1) for connection in connections)
 
 	# print("words_by_chunk:", words_using_chunk)
 	# print("chunk_counts:", chunk_counts)

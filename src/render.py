@@ -13,7 +13,18 @@ def render_grid(cells: list[Cell]):
 		for x in range(min_x, max_x + 1):
 			cell = next((c for c in cells if c.position == (x, y)), None)
 			if cell:
-				print(cell.letters.ljust(max_cell_width), end=" ")
+				print(cell.letters.ljust(max_cell_width), end="|" if cell.barRight else " ")
 			else:
-				print(".".ljust(max_cell_width), end=" ")
+				print("#" * max_cell_width, end=" ")
+		print()
+		for x in range(min_x, max_x + 1):
+			cell = next((c for c in cells if c.position == (x, y)), None)
+			if cell and cell.barBottom:
+				print("—" * max_cell_width, end=" ")
+			# elif cell:
+			# 	print(" " * max_cell_width, end=" ")
+			# else:
+			# 	print("#" * max_cell_width, end=" ")
+			else:
+				print(" " * max_cell_width, end=" ")
 		print()
