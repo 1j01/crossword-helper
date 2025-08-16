@@ -5,6 +5,7 @@ This project is a command-line interface (CLI) tool designed assist in making ce
 ## Features
 
 - Generate rebus puzzles where every cell contains a specific number of letters.
+- For schrodinger puzzles, find words that have similar meanings but specific different letters in a given position, and match in length. I'm calling these "superpuzzitions". This is useful when you already have one superpuzzition and you want to find crossing words that have to now match multiple different letters to fit two grids simultaneously.
 
 ## Installation
 
@@ -30,6 +31,17 @@ See help for more options:
 ```bash
 python -m src.cli generate-rebus --help
 ```
+
+To find superpuzzitions:
+```bash
+python -m src.cli superpuzzition --length 5 s p
+```
+
+See help for more options:
+```bash
+python -m src.cli superpuzzition --help
+```
+
 
 ## License
 

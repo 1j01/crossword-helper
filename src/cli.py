@@ -1,19 +1,21 @@
 import argparse
-from .logic import find_similar_words, generate_rebus
+from .logic import find_superpuzzitions, generate_rebus
 from .render import render_grid_ascii, render_grid_html
 
 def main():
     parser = argparse.ArgumentParser(description='Crossword Helper CLI')
     subparsers = parser.add_subparsers(dest='command', required=True)
 
-    # similar-words subcommand
-    sim_parser = subparsers.add_parser('similar-words', help='Find word pairs with similar definitions')
-    sim_parser.add_argument('length', type=int, help='Target word length')
-    sim_parser.add_argument('letter1', type=str, help='First letter to compare')
-    sim_parser.add_argument('letter2', type=str, help='Second letter to compare')
-    sim_parser.add_argument('--exactly-one-different', action='store_true', help='Exactly one letter different')
+    # superpuzzition subcommand
+    superpuzzition_parser = subparsers.add_parser('superpuzzition', help='Find word pairs with specific letter differences')
+    superpuzzition_parser.add_argument('--length', type=int, required=True, help='Target word length')
+    superpuzzition_parser.add_argument('--exactly-one-different', action='store_true', help='Only find pairs where one letter is different (default: False)')
+    superpuzzition_parser.add_argument('--position', type=int, default=None, help='Position to compare (0-based, optional)')
+    superpuzzition_parser.add_argument('letters', nargs='+', type=str, help='Letters to compare (provide two or more, comma-separated)')
 
     # generate-rebus subcommand
+    # Could rename it since it supports generating non-rebus puzzle too with --letters-per-cell 1
+    # Could make --letters-per-cell default to 1 for normal crosswords.
     rebus_parser = subparsers.add_parser('generate-rebus', help='Generate rebus grid')
     # In the future could have min/max letters per cell
     rebus_parser.add_argument('--letters-per-cell', type=int, default=2, help='Number of letters per cell (default: 2)')
@@ -25,10 +27,11 @@ def main():
 
     args = parser.parse_args()
 
-    if args.command == 'similar-words':
-        word_pairs = find_similar_words(args.length, args.letter1, args.letter2, args.exactly_one_different)
-        for pair in word_pairs:
-            print(pair)
+    if args.command == 'superpuzzition':
+        target_letters = [l.strip() for l in args.letters]
+        pairs = find_superpuzzitions(args.length, target_letters, args.position, args.exactly_one_different)
+        for pair in pairs:
+            print(pair[0] + " / " + pair[1])
     elif args.command == 'generate-rebus':
         cells = generate_rebus(args.letters_per_cell, args.max_word_length, args.min_chunk_usage, args.max_placement_attempts, args.max_words)
         if args.format == 'ascii':
