@@ -1,6 +1,6 @@
 import argparse
 from .logic import find_similar_words, generate_rebus
-from .render import render_grid
+from .render import render_grid_ascii, render_grid_html
 
 def main():
     parser = argparse.ArgumentParser(description='Crossword Helper CLI')
@@ -21,6 +21,7 @@ def main():
     rebus_parser.add_argument('--min-chunk-usage', type=int, default=20, help='Minimum number of usages of a span of letters in the dictionary to be considered for inclusion (default: 20)')
     rebus_parser.add_argument('--max-placement-attempts', type=int, default=10000, help='Maximum number of placement attempts (default: 10000)')
     rebus_parser.add_argument('--max-words', type=int, default=20, help='Maximum number of words to place (default: 20)')
+    rebus_parser.add_argument('--format', type=str, choices=['ascii', 'html'], default='ascii', help='Output format (default: ascii)')
 
     args = parser.parse_args()
 
@@ -30,7 +31,10 @@ def main():
             print(pair)
     elif args.command == 'generate-rebus':
         cells = generate_rebus(args.letters_per_cell, args.max_word_length, args.min_chunk_usage, args.max_placement_attempts, args.max_words)
-        render_grid(cells)
+        if args.format == 'ascii':
+            print(render_grid_ascii(cells))
+        elif args.format == 'html':
+            print(render_grid_html(cells))
 
 if __name__ == '__main__':
     main()
