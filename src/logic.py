@@ -109,16 +109,14 @@ def generate_rebus(letters_per_cell: int, max_word_length: int, min_chunk_usage:
 			(before_first, first),
 			(after_last, last)
 		]
-		problem = False
-		for a, b in pairs:
-			if any(
+		if any(
+			any(
 				(connection[0] == a and connection[1] == b) or
 				(connection[1] == a and connection[0] == b)
 				for connection in connections
-			):
-				problem = True
-				break
-		if problem:
+			)
+			for a, b in pairs
+		):
 			continue
 
 
