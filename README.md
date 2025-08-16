@@ -18,10 +18,17 @@ pip install -r requirements.txt
 
 ## Usage
 
-To run the CLI, execute the following command:
+To generate a crossword, try running the following command:
 
 ```bash
-python -m src.cli
+python -m src.cli generate-rebus --max-words 100 --letters-per-cell 3 --format html >xw.html
+```
+
+Then open xw.html in your browser.
+
+See help for more options:
+```bash
+python -m src.cli generate-rebus --help
 ```
 
 ## License
