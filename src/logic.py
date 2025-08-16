@@ -76,17 +76,17 @@ def generate_rebus(letters_per_cell: int, max_word_length: int, min_chunk_usage:
 		down = choice([True, False])
 
 		cells_to_place: list[Cell] = []
+		positions: list[tuple[int, int]] = []
 		for i, chunk in enumerate(chunks_to_place):
-			# Include the overlapped chunk to simplify iteration for adding connections
-			# Complicates adding the cells though (if we make sure to avoid duplicating the overlapped cell)
-			# TODO: instead just keep track of cells to place and positions of the word separately
-			# Cells to place can exclude the overlapped cell, and the positions can include it.
-			# if i == matching_index:
-			# 	continue
-			if down:
-				cells_to_place.append(Cell(position=(cell.position[0], cell.position[1] + i - matching_index), letters=chunk))
-			else:
-				cells_to_place.append(Cell(position=(cell.position[0] + i - matching_index, cell.position[1]), letters=chunk))
+			position = (
+				cell.position[0] + (0 if down else (i - matching_index)),
+				cell.position[1] + ((i - matching_index) if down else 0)
+			)
+			# Exclude the overlapped cell for `cells_to_place` since we don't want to duplicate it,
+			# but not for `positions` which is used for adding connections (we DO want to connect to the overlapped cell)
+			positions.append(position)
+			if i != matching_index:
+				cells_to_place.append(Cell(position=position, letters=chunk))
 
 		# Check for collisions
 		collision = False
@@ -96,10 +96,10 @@ def generate_rebus(letters_per_cell: int, max_word_length: int, min_chunk_usage:
 				break
 
 		if not collision:
-			# Add the new cells (excluding the overlapped cell) and connections
-			cells.extend([new_cell for new_cell in cells_to_place if new_cell.position != cell.position])
-			for i in range(len(cells_to_place) - 1):
-				connections.append((cells_to_place[i].position, cells_to_place[i + 1].position))
+			# Add the new cells and connections
+			cells.extend(cells_to_place)
+			for i in range(len(positions) - 1):
+				connections.append((positions[i], positions[i + 1]))
 
 	# Calculate bars
 	for cell in cells:
