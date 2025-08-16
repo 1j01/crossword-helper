@@ -12,6 +12,7 @@ def main():
     superpuzzition_parser.add_argument('--length', type=int, required=True, help='Target word length')
     superpuzzition_parser.add_argument('--exactly-one-different', action='store_true', help='Only find pairs where one letter is different (default: False)')
     superpuzzition_parser.add_argument('--position', type=int, default=None, help='Position to compare (0-based, optional)')
+    superpuzzition_parser.add_argument('--max-results', type=int, default=100, help='Maximum number of pairs to return (default: 100)')
     superpuzzition_parser.add_argument('letters', nargs='+', type=str, help='Letters to compare (provide two or more, comma-separated)')
 
     # gen-puzzle subcommand
@@ -29,7 +30,7 @@ def main():
     if args.command == 'superpuzzition':
         target_letters = [l.strip() for l in args.letters]
         pairs = find_superpuzzitions(args.length, target_letters, args.position, args.exactly_one_different)
-        for pair in pairs:
+        for pair in pairs[:args.max_results]:
             print(pair[0] + " / " + pair[1] + " (score: " + f"{pair[2]:.4f}" + ")")
     elif args.command == 'gen-puzzle':
         cells = generate_puzzle(args.letters_per_cell, args.max_word_length, args.min_chunk_usage, args.max_placement_attempts, args.max_words)
