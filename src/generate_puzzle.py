@@ -12,7 +12,7 @@ class Cell:
 	barRight: bool = False
 	barBottom: bool = False
 
-def generate_puzzle(letters_per_cell: int, max_word_length: int, min_chunk_usage: int, max_placement_attempts: int, max_words: int) -> list[Cell]:
+def generate_puzzle(letters_per_cell: int, max_word_length: int, min_chunk_usage: int, max_placement_attempts: int, max_words: int, max_width: int, max_height: int) -> list[Cell]:
 	chunked_words: dict[str, list[str]] = dict()
 	words_using_chunk: dict[str, set[str]] = defaultdict(set)
 	chunk_counts: Counter[str] = Counter()
@@ -48,6 +48,7 @@ def generate_puzzle(letters_per_cell: int, max_word_length: int, min_chunk_usage
 	cells: list[Cell] = []
 	connections: list[tuple[tuple[int, int], tuple[int, int]]] = []
 	# Start with a random word
+	# TODO: respect grid boundaries (choose a word/direction that fits)
 	allowed_words = list(chunked_words.keys())
 	start_word = choice(allowed_words)
 	start_chunks = chunked_words[start_word]
@@ -61,7 +62,8 @@ def generate_puzzle(letters_per_cell: int, max_word_length: int, min_chunk_usage
 	for _ in range(max_placement_attempts):
 		# Pick a random cell to branch off from
 		# Preferably branch off of cells closer to the origin, to favor a more compact layout
-		# TODO: try other shapes, hard limits
+		# TODO: try other shapes/falloffs, maybe manhattan distance is better, maybe exponent can help
+		# maybe this doesn't matter anymore now that we have hard bounds checking (unless we want to get artistic with the layout)
 		weights = [1 / (hypot(cell.position[0], cell.position[1]) + 1) for cell in cells]
 		cell = choices(cells, weights=weights, k=1)[0]
 		# Pick a random word that can overlap this cell
@@ -87,6 +89,17 @@ def generate_puzzle(letters_per_cell: int, max_word_length: int, min_chunk_usage
 			positions.append(position)
 			if i != matching_index:
 				cells_to_place.append(Cell(position=position, letters=chunk))
+
+		# Check bounds
+		new_cells = cells + cells_to_place
+		new_min_x = min(cell.position[0] for cell in new_cells)
+		new_min_y = min(cell.position[1] for cell in new_cells)
+		new_max_x = max(cell.position[0] for cell in new_cells)
+		new_max_y = max(cell.position[1] for cell in new_cells)
+		new_width = new_max_x - new_min_x + 1
+		new_height = new_max_y - new_min_y + 1
+		if new_width > max_width or new_height > max_height:
+			continue
 
 		# Prevent words running together like portmanteaus
 		# Check for connections between the first position and the cell before it (left or up)

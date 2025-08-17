@@ -24,6 +24,8 @@ def main():
     gen_puzzle_parser.add_argument('--max-placement-attempts', type=int, default=10000, help='Maximum number of placement attempts (default: 10000)')
     gen_puzzle_parser.add_argument('--max-words', type=int, default=20, help='Maximum number of words to place (default: 20)')
     gen_puzzle_parser.add_argument('--format', type=str, choices=['ascii', 'html', 'svg'], default='ascii', help='Output format (default: ascii)')
+    gen_puzzle_parser.add_argument('--max-width', type=int, default=15, help='Maximum grid width (default: 15)')
+    gen_puzzle_parser.add_argument('--max-height', type=int, default=15, help='Maximum grid height (default: 15)')
 
     args = parser.parse_args()
 
@@ -33,7 +35,7 @@ def main():
         for pair in pairs[:args.max_results]:
             print(pair[0] + " / " + pair[1] + " (score: " + f"{pair[2]:.4f}" + ")")
     elif args.command == 'gen-puzzle':
-        cells = generate_puzzle(args.letters_per_cell, args.max_word_length, args.min_chunk_usage, args.max_placement_attempts, args.max_words)
+        cells = generate_puzzle(args.letters_per_cell, args.max_word_length, args.min_chunk_usage, args.max_placement_attempts, args.max_words, args.max_width, args.max_height)
         if args.format == 'ascii':
             print(render_grid_ascii(cells))
         elif args.format == 'html':
