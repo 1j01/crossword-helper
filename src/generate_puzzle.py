@@ -119,16 +119,17 @@ def generate_puzzle(letters_per_cell: int, max_word_length: int, min_chunk_usage
 			if any(existing_cell.position == new_cell.position and existing_cell.letters != new_cell.letters for existing_cell in cells):
 				collision = True
 				break
+		if collision:
+			continue
+	
+		# Add the new cells and connections
+		cells.extend(cells_to_place)
+		for i in range(len(positions) - 1):
+			connections.append((positions[i], positions[i + 1]))
 
-		if not collision:
-			# Add the new cells and connections
-			cells.extend(cells_to_place)
-			for i in range(len(positions) - 1):
-				connections.append((positions[i], positions[i + 1]))
-
-			words_placed += 1
-			if words_placed >= max_words:
-				break
+		words_placed += 1
+		if words_placed >= max_words:
+			break
 
 	# Calculate bars
 	for cell in cells:
