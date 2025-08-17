@@ -1,7 +1,7 @@
 import argparse
 from .generate_puzzle import generate_puzzle
 from .superpuzzition import find_superpuzzitions
-from .render import render_grid_ascii, render_grid_html
+from .render import render_grid_ascii, render_grid_html, render_grid_svg
 
 def main():
     parser = argparse.ArgumentParser(description='Crossword Helper CLI')
@@ -23,7 +23,7 @@ def main():
     gen_puzzle_parser.add_argument('--min-chunk-usage', type=int, default=20, help='Minimum number of usages of a span of letters in the dictionary to be considered for inclusion (default: 20)')
     gen_puzzle_parser.add_argument('--max-placement-attempts', type=int, default=10000, help='Maximum number of placement attempts (default: 10000)')
     gen_puzzle_parser.add_argument('--max-words', type=int, default=20, help='Maximum number of words to place (default: 20)')
-    gen_puzzle_parser.add_argument('--format', type=str, choices=['ascii', 'html'], default='ascii', help='Output format (default: ascii)')
+    gen_puzzle_parser.add_argument('--format', type=str, choices=['ascii', 'html', 'svg'], default='ascii', help='Output format (default: ascii)')
 
     args = parser.parse_args()
 
@@ -38,6 +38,8 @@ def main():
             print(render_grid_ascii(cells))
         elif args.format == 'html':
             print(render_grid_html(cells))
+        elif args.format == 'svg':
+            print(render_grid_svg(cells))
 
 if __name__ == '__main__':
     main()
