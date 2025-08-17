@@ -1,0 +1,588 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="450" height="450" style="font-family: monospace;">
+<g transform="translate(270, 270)">
+  <rect x="-270" y="-270" width="30" height="30" fill="black" />
+  <rect x="-240" y="-270" width="30" height="30" fill="black" />
+  <rect x="-210" y="-270" width="30" height="30" fill="black" />
+  <rect x="-180" y="-270" width="30" height="30" fill="black" />
+  <text x="-135.0" y="-255.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">BIO</text>
+  <line x1="-120" y1="-270" x2="-120" y2="-240" stroke="black" stroke-width="4" />
+  <line x1="-150" y1="-240" x2="-120" y2="-240" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-105.0" y="-255.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">REC</text>
+  <line x1="-90" y1="-270" x2="-90" y2="-240" stroke="black" stroke-width="4" />
+  <line x1="-120" y1="-240" x2="-90" y2="-240" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <rect x="-90" y="-270" width="30" height="30" fill="black" />
+  <text x="-45.0" y="-255.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">DOM</text>
+  <line x1="-30" y1="-270" x2="-30" y2="-240" stroke="black" stroke-width="4" />
+  <line x1="-60" y1="-240" x2="-30" y2="-240" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-15.0" y="-255.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">VEN</text>
+  <line x1="0" y1="-270" x2="0" y2="-240" stroke="black" stroke-width="4" />
+  <line x1="-30" y1="-240" x2="0" y2="-240" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <rect x="0" y="-270" width="30" height="30" fill="black" />
+  <rect x="30" y="-270" width="30" height="30" fill="black" />
+  <text x="75.0" y="-255.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">MOR</text>
+  <line x1="90" y1="-270" x2="90" y2="-240" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="60" y1="-240" x2="90" y2="-240" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="105.0" y="-255.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">GAN</text>
+  <line x1="120" y1="-270" x2="120" y2="-240" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="90" y1="-240" x2="120" y2="-240" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="135.0" y="-255.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">ITE</text>
+  <line x1="150" y1="-270" x2="150" y2="-240" stroke="black" stroke-width="4" />
+  <line x1="120" y1="-240" x2="150" y2="-240" stroke="black" stroke-width="4" />
+  <text x="165.0" y="-255.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">WRE</text>
+  <line x1="180" y1="-270" x2="180" y2="-240" stroke="black" stroke-width="4" />
+  <line x1="150" y1="-240" x2="180" y2="-240" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <rect x="-270" y="-240" width="30" height="30" fill="black" />
+  <rect x="-240" y="-240" width="30" height="30" fill="black" />
+  <rect x="-210" y="-240" width="30" height="30" fill="black" />
+  <rect x="-180" y="-240" width="30" height="30" fill="black" />
+  <text x="-135.0" y="-225.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">GEO</text>
+  <line x1="-120" y1="-240" x2="-120" y2="-210" stroke="black" stroke-width="4" />
+  <line x1="-150" y1="-210" x2="-120" y2="-210" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-105.0" y="-225.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">EPT</text>
+  <line x1="-90" y1="-240" x2="-90" y2="-210" stroke="black" stroke-width="4" />
+  <line x1="-120" y1="-210" x2="-90" y2="-210" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-75.0" y="-225.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">SAL</text>
+  <line x1="-60" y1="-240" x2="-60" y2="-210" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-90" y1="-210" x2="-60" y2="-210" stroke="black" stroke-width="4" />
+  <text x="-45.0" y="-225.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">INA</text>
+  <line x1="-30" y1="-240" x2="-30" y2="-210" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-60" y1="-210" x2="-30" y2="-210" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-15.0" y="-225.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">TED</text>
+  <line x1="0" y1="-240" x2="0" y2="-210" stroke="black" stroke-width="4" />
+  <line x1="-30" y1="-210" x2="0" y2="-210" stroke="black" stroke-width="4" />
+  <rect x="0" y="-240" width="30" height="30" fill="black" />
+  <text x="45.0" y="-225.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">STU</text>
+  <line x1="60" y1="-240" x2="60" y2="-210" stroke="black" stroke-width="4" />
+  <line x1="30" y1="-210" x2="60" y2="-210" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="75.0" y="-225.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">BID</text>
+  <line x1="90" y1="-240" x2="90" y2="-210" stroke="black" stroke-width="4" />
+  <line x1="60" y1="-210" x2="90" y2="-210" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="105.0" y="-225.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">TED</text>
+  <line x1="120" y1="-240" x2="120" y2="-210" stroke="black" stroke-width="4" />
+  <line x1="90" y1="-210" x2="120" y2="-210" stroke="black" stroke-width="4" />
+  <rect x="120" y="-240" width="30" height="30" fill="black" />
+  <text x="165.0" y="-225.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">STL</text>
+  <line x1="180" y1="-240" x2="180" y2="-210" stroke="black" stroke-width="4" />
+  <line x1="150" y1="-210" x2="180" y2="-210" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <rect x="-270" y="-210" width="30" height="30" fill="black" />
+  <rect x="-240" y="-210" width="30" height="30" fill="black" />
+  <rect x="-210" y="-210" width="30" height="30" fill="black" />
+  <rect x="-180" y="-210" width="30" height="30" fill="black" />
+  <text x="-135.0" y="-195.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">GRA</text>
+  <line x1="-120" y1="-210" x2="-120" y2="-180" stroke="black" stroke-width="4" />
+  <line x1="-150" y1="-180" x2="-120" y2="-180" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-105.0" y="-195.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">ACU</text>
+  <line x1="-90" y1="-210" x2="-90" y2="-180" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-120" y1="-180" x2="-90" y2="-180" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-75.0" y="-195.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">POI</text>
+  <line x1="-60" y1="-210" x2="-60" y2="-180" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-90" y1="-180" x2="-60" y2="-180" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-45.0" y="-195.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">NTS</text>
+  <line x1="-30" y1="-210" x2="-30" y2="-180" stroke="black" stroke-width="4" />
+  <line x1="-60" y1="-180" x2="-30" y2="-180" stroke="black" stroke-width="4" />
+  <rect x="-30" y="-210" width="30" height="30" fill="black" />
+  <text x="15.0" y="-195.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">DRU</text>
+  <line x1="30" y1="-210" x2="30" y2="-180" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="0" y1="-180" x2="30" y2="-180" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="45.0" y="-195.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">MBL</text>
+  <line x1="60" y1="-210" x2="60" y2="-180" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="30" y1="-180" x2="60" y2="-180" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="75.0" y="-195.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">EST</text>
+  <line x1="90" y1="-210" x2="90" y2="-180" stroke="black" stroke-width="4" />
+  <line x1="60" y1="-180" x2="90" y2="-180" stroke="black" stroke-width="4" />
+  <text x="105.0" y="-195.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">OUT</text>
+  <line x1="120" y1="-210" x2="120" y2="-180" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="90" y1="-180" x2="120" y2="-180" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="135.0" y="-195.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">GAZ</text>
+  <line x1="150" y1="-210" x2="150" y2="-180" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="120" y1="-180" x2="150" y2="-180" stroke="black" stroke-width="4" />
+  <text x="165.0" y="-195.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">ING</text>
+  <line x1="180" y1="-210" x2="180" y2="-180" stroke="black" stroke-width="4" />
+  <line x1="150" y1="-180" x2="180" y2="-180" stroke="black" stroke-width="4" />
+  <rect x="-270" y="-180" width="30" height="30" fill="black" />
+  <rect x="-240" y="-180" width="30" height="30" fill="black" />
+  <rect x="-210" y="-180" width="30" height="30" fill="black" />
+  <text x="-165.0" y="-165.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">SUB</text>
+  <line x1="-150" y1="-180" x2="-150" y2="-150" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-180" y1="-150" x2="-150" y2="-150" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-135.0" y="-165.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">PHY</text>
+  <line x1="-120" y1="-180" x2="-120" y2="-150" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-150" y1="-150" x2="-120" y2="-150" stroke="black" stroke-width="4" />
+  <text x="-105.0" y="-165.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">LUM</text>
+  <line x1="-90" y1="-180" x2="-90" y2="-150" stroke="black" stroke-width="4" />
+  <line x1="-120" y1="-150" x2="-90" y2="-150" stroke="black" stroke-width="4" />
+  <text x="-75.0" y="-165.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">LUS</text>
+  <line x1="-60" y1="-180" x2="-60" y2="-150" stroke="black" stroke-width="4" />
+  <line x1="-90" y1="-150" x2="-60" y2="-150" stroke="black" stroke-width="4" />
+  <rect x="-60" y="-180" width="30" height="30" fill="black" />
+  <text x="-15.0" y="-165.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">GLU</text>
+  <line x1="0" y1="-180" x2="0" y2="-150" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-30" y1="-150" x2="0" y2="-150" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="15.0" y="-165.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">MMY</text>
+  <line x1="30" y1="-180" x2="30" y2="-150" stroke="black" stroke-width="4" />
+  <line x1="0" y1="-150" x2="30" y2="-150" stroke="black" stroke-width="4" />
+  <text x="45.0" y="-165.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">ETH</text>
+  <line x1="60" y1="-180" x2="60" y2="-150" stroke="black" stroke-width="4" />
+  <line x1="30" y1="-150" x2="60" y2="-150" stroke="black" stroke-width="4" />
+  <text x="75.0" y="-165.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">OUT</text>
+  <line x1="90" y1="-180" x2="90" y2="-150" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="60" y1="-150" x2="90" y2="-150" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="105.0" y="-165.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">SUM</text>
+  <line x1="120" y1="-180" x2="120" y2="-150" stroke="black" stroke-width="4" />
+  <line x1="90" y1="-150" x2="120" y2="-150" stroke="black" stroke-width="4" />
+  <text x="135.0" y="-165.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">DIV</text>
+  <line x1="150" y1="-180" x2="150" y2="-150" stroke="black" stroke-width="4" />
+  <line x1="120" y1="-150" x2="150" y2="-150" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="165.0" y="-165.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">SCI</text>
+  <line x1="180" y1="-180" x2="180" y2="-150" stroke="black" stroke-width="4" />
+  <line x1="150" y1="-150" x2="180" y2="-150" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <rect x="-270" y="-150" width="30" height="30" fill="black" />
+  <text x="-225.0" y="-135.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">NON</text>
+  <line x1="-210" y1="-150" x2="-210" y2="-120" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-240" y1="-120" x2="-210" y2="-120" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-195.0" y="-135.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">TAX</text>
+  <line x1="-180" y1="-150" x2="-180" y2="-120" stroke="black" stroke-width="4" />
+  <line x1="-210" y1="-120" x2="-180" y2="-120" stroke="black" stroke-width="4" />
+  <text x="-165.0" y="-135.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">MER</text>
+  <line x1="-150" y1="-150" x2="-150" y2="-120" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-180" y1="-120" x2="-150" y2="-120" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-135.0" y="-135.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">GER</text>
+  <line x1="-120" y1="-150" x2="-120" y2="-120" stroke="black" stroke-width="4" />
+  <line x1="-150" y1="-120" x2="-120" y2="-120" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-105.0" y="-135.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">SHE</text>
+  <line x1="-90" y1="-150" x2="-90" y2="-120" stroke="black" stroke-width="4" />
+  <line x1="-120" y1="-120" x2="-90" y2="-120" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-75.0" y="-135.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">SPO</text>
+  <line x1="-60" y1="-150" x2="-60" y2="-120" stroke="black" stroke-width="4" />
+  <line x1="-90" y1="-120" x2="-60" y2="-120" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-45.0" y="-135.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">HER</text>
+  <line x1="-30" y1="-150" x2="-30" y2="-120" stroke="black" stroke-width="4" />
+  <line x1="-60" y1="-120" x2="-30" y2="-120" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-15.0" y="-135.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">COS</text>
+  <line x1="0" y1="-150" x2="0" y2="-120" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-30" y1="-120" x2="0" y2="-120" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="15.0" y="-135.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">WEA</text>
+  <line x1="30" y1="-150" x2="30" y2="-120" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="0" y1="-120" x2="30" y2="-120" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="45.0" y="-135.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">RER</text>
+  <line x1="60" y1="-150" x2="60" y2="-120" stroke="black" stroke-width="4" />
+  <line x1="30" y1="-120" x2="60" y2="-120" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="75.0" y="-135.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">ERW</text>
+  <line x1="90" y1="-150" x2="90" y2="-120" stroke="black" stroke-width="4" />
+  <line x1="60" y1="-120" x2="90" y2="-120" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="105.0" y="-135.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">EXC</text>
+  <line x1="120" y1="-150" x2="120" y2="-120" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="90" y1="-120" x2="120" y2="-120" stroke="black" stroke-width="4" />
+  <text x="135.0" y="-135.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">ISI</text>
+  <line x1="150" y1="-150" x2="150" y2="-120" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="120" y1="-120" x2="150" y2="-120" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="165.0" y="-135.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">ONS</text>
+  <line x1="180" y1="-150" x2="180" y2="-120" stroke="black" stroke-width="4" />
+  <line x1="150" y1="-120" x2="180" y2="-120" stroke="black" stroke-width="4" />
+  <rect x="-270" y="-120" width="30" height="30" fill="black" />
+  <text x="-225.0" y="-105.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">PRE</text>
+  <line x1="-210" y1="-120" x2="-210" y2="-90" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-240" y1="-90" x2="-210" y2="-90" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-195.0" y="-105.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">STI</text>
+  <line x1="-180" y1="-120" x2="-180" y2="-90" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-210" y1="-90" x2="-180" y2="-90" stroke="black" stroke-width="4" />
+  <text x="-165.0" y="-105.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">GES</text>
+  <line x1="-150" y1="-120" x2="-150" y2="-90" stroke="black" stroke-width="4" />
+  <line x1="-180" y1="-90" x2="-150" y2="-90" stroke="black" stroke-width="4" />
+  <text x="-135.0" y="-105.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">MOG</text>
+  <line x1="-120" y1="-120" x2="-120" y2="-90" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-150" y1="-90" x2="-120" y2="-90" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-105.0" y="-105.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">ILA</text>
+  <line x1="-90" y1="-120" x2="-90" y2="-90" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-120" y1="-90" x2="-90" y2="-90" stroke="black" stroke-width="4" />
+  <text x="-75.0" y="-105.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">LIA</text>
+  <line x1="-60" y1="-120" x2="-60" y2="-90" stroke="black" stroke-width="4" />
+  <line x1="-90" y1="-90" x2="-60" y2="-90" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-45.0" y="-105.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">BOR</text>
+  <line x1="-30" y1="-120" x2="-30" y2="-90" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-60" y1="-90" x2="-30" y2="-90" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-15.0" y="-105.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">IDE</text>
+  <line x1="0" y1="-120" x2="0" y2="-90" stroke="black" stroke-width="4" />
+  <line x1="-30" y1="-90" x2="0" y2="-90" stroke="black" stroke-width="4" />
+  <text x="15.0" y="-105.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">ZEN</text>
+  <line x1="30" y1="-120" x2="30" y2="-90" stroke="black" stroke-width="4" />
+  <line x1="0" y1="-90" x2="30" y2="-90" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="45.0" y="-105.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">UNS</text>
+  <line x1="60" y1="-120" x2="60" y2="-90" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="30" y1="-90" x2="60" y2="-90" stroke="black" stroke-width="4" />
+  <text x="75.0" y="-105.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">EAR</text>
+  <line x1="90" y1="-120" x2="90" y2="-90" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="60" y1="-90" x2="90" y2="-90" stroke="black" stroke-width="4" />
+  <text x="105.0" y="-105.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">CHA</text>
+  <line x1="120" y1="-120" x2="120" y2="-90" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="90" y1="-90" x2="120" y2="-90" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="135.0" y="-105.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">BLY</text>
+  <line x1="150" y1="-120" x2="150" y2="-90" stroke="black" stroke-width="4" />
+  <line x1="120" y1="-90" x2="150" y2="-90" stroke="black" stroke-width="4" />
+  <text x="165.0" y="-105.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">CAU</text>
+  <line x1="180" y1="-120" x2="180" y2="-90" stroke="black" stroke-width="4" />
+  <line x1="150" y1="-90" x2="180" y2="-90" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-255.0" y="-75.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">NAI</text>
+  <line x1="-240" y1="-90" x2="-240" y2="-60" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-270" y1="-60" x2="-240" y2="-60" stroke="black" stroke-width="4" />
+  <text x="-225.0" y="-75.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">FER</text>
+  <line x1="-210" y1="-90" x2="-210" y2="-60" stroke="black" stroke-width="4" />
+  <line x1="-240" y1="-60" x2="-210" y2="-60" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-195.0" y="-75.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">SHA</text>
+  <line x1="-180" y1="-90" x2="-180" y2="-60" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-210" y1="-60" x2="-180" y2="-60" stroke="black" stroke-width="4" />
+  <text x="-165.0" y="-75.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">GRE</text>
+  <line x1="-150" y1="-90" x2="-150" y2="-60" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-180" y1="-60" x2="-150" y2="-60" stroke="black" stroke-width="4" />
+  <text x="-135.0" y="-75.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">ENS</text>
+  <line x1="-120" y1="-90" x2="-120" y2="-60" stroke="black" stroke-width="4" />
+  <line x1="-150" y1="-60" x2="-120" y2="-60" stroke="black" stroke-width="4" />
+  <text x="-105.0" y="-75.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">PAS</text>
+  <line x1="-90" y1="-90" x2="-90" y2="-60" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-120" y1="-60" x2="-90" y2="-60" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-75.0" y="-75.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">TOR</text>
+  <line x1="-60" y1="-90" x2="-60" y2="-60" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-90" y1="-60" x2="-60" y2="-60" stroke="black" stroke-width="4" />
+  <text x="-45.0" y="-75.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">IZE</text>
+  <line x1="-30" y1="-90" x2="-30" y2="-60" stroke="black" stroke-width="4" />
+  <line x1="-60" y1="-60" x2="-30" y2="-60" stroke="black" stroke-width="4" />
+  <text x="-15.0" y="-75.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">BAS</text>
+  <line x1="0" y1="-90" x2="0" y2="-60" stroke="black" stroke-width="4" />
+  <line x1="-30" y1="-60" x2="0" y2="-60" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="15.0" y="-75.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">ING</text>
+  <line x1="30" y1="-90" x2="30" y2="-60" stroke="black" stroke-width="4" />
+  <line x1="0" y1="-60" x2="30" y2="-60" stroke="black" stroke-width="4" />
+  <text x="45.0" y="-75.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">POL</text>
+  <line x1="60" y1="-90" x2="60" y2="-60" stroke="black" stroke-width="4" />
+  <line x1="30" y1="-60" x2="60" y2="-60" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="75.0" y="-75.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">CHA</text>
+  <line x1="90" y1="-90" x2="90" y2="-60" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="60" y1="-60" x2="90" y2="-60" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="105.0" y="-75.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">RTA</text>
+  <line x1="120" y1="-90" x2="120" y2="-60" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="90" y1="-60" x2="120" y2="-60" stroke="black" stroke-width="4" />
+  <text x="135.0" y="-75.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">BLE</text>
+  <line x1="150" y1="-90" x2="150" y2="-60" stroke="black" stroke-width="4" />
+  <line x1="120" y1="-60" x2="150" y2="-60" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="165.0" y="-75.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">MES</text>
+  <line x1="180" y1="-90" x2="180" y2="-60" stroke="black" stroke-width="4" />
+  <line x1="150" y1="-60" x2="180" y2="-60" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <rect x="-270" y="-60" width="30" height="30" fill="black" />
+  <text x="-225.0" y="-45.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">RED</text>
+  <line x1="-210" y1="-60" x2="-210" y2="-30" stroke="black" stroke-width="4" />
+  <line x1="-240" y1="-30" x2="-210" y2="-30" stroke="black" stroke-width="4" />
+  <text x="-195.0" y="-45.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">SCR</text>
+  <line x1="-180" y1="-60" x2="-180" y2="-30" stroke="black" stroke-width="4" />
+  <line x1="-210" y1="-30" x2="-180" y2="-30" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-165.0" y="-45.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">BAR</text>
+  <line x1="-150" y1="-60" x2="-150" y2="-30" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-180" y1="-30" x2="-150" y2="-30" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-135.0" y="-45.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">DAS</text>
+  <line x1="-120" y1="-60" x2="-120" y2="-30" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-150" y1="-30" x2="-120" y2="-30" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-105.0" y="-45.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">HES</text>
+  <line x1="-90" y1="-60" x2="-90" y2="-30" stroke="black" stroke-width="4" />
+  <line x1="-120" y1="-30" x2="-90" y2="-30" stroke="black" stroke-width="4" />
+  <text x="-75.0" y="-45.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">INT</text>
+  <line x1="-60" y1="-60" x2="-60" y2="-30" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-90" y1="-30" x2="-60" y2="-30" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-45.0" y="-45.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">ICE</text>
+  <line x1="-30" y1="-60" x2="-30" y2="-30" stroke="black" stroke-width="4" />
+  <line x1="-60" y1="-30" x2="-30" y2="-30" stroke="black" stroke-width="4" />
+  <text x="-15.0" y="-45.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">ILI</text>
+  <line x1="0" y1="-60" x2="0" y2="-30" stroke="black" stroke-width="4" />
+  <line x1="-30" y1="-30" x2="0" y2="-30" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="15.0" y="-45.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">PER</text>
+  <line x1="30" y1="-60" x2="30" y2="-30" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="0" y1="-30" x2="30" y2="-30" stroke="black" stroke-width="4" />
+  <text x="45.0" y="-45.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">ICY</text>
+  <line x1="60" y1="-60" x2="60" y2="-30" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="30" y1="-30" x2="60" y2="-30" stroke="black" stroke-width="4" />
+  <text x="75.0" y="-45.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">STI</text>
+  <line x1="90" y1="-60" x2="90" y2="-30" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="60" y1="-30" x2="90" y2="-30" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="105.0" y="-45.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">TIS</text>
+  <line x1="120" y1="-60" x2="120" y2="-30" stroke="black" stroke-width="4" />
+  <line x1="90" y1="-30" x2="120" y2="-30" stroke="black" stroke-width="4" />
+  <text x="135.0" y="-45.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">NNO</text>
+  <line x1="150" y1="-60" x2="150" y2="-30" stroke="black" stroke-width="4" />
+  <line x1="120" y1="-30" x2="150" y2="-30" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="165.0" y="-45.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">THE</text>
+  <line x1="180" y1="-60" x2="180" y2="-30" stroke="black" stroke-width="4" />
+  <line x1="150" y1="-30" x2="180" y2="-30" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <rect x="-270" y="-30" width="30" height="30" fill="black" />
+  <text x="-225.0" y="-15.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">BIA</text>
+  <line x1="-210" y1="-30" x2="-210" y2="0" stroke="black" stroke-width="4" />
+  <line x1="-240" y1="0" x2="-210" y2="0" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-195.0" y="-15.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">IPT</text>
+  <line x1="-180" y1="-30" x2="-180" y2="0" stroke="black" stroke-width="4" />
+  <line x1="-210" y1="0" x2="-180" y2="0" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-165.0" y="-15.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">RET</text>
+  <line x1="-150" y1="-30" x2="-150" y2="0" stroke="black" stroke-width="4" />
+  <line x1="-180" y1="0" x2="-150" y2="0" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-135.0" y="-15.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">HIN</text>
+  <line x1="-120" y1="-30" x2="-120" y2="0" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-150" y1="0" x2="-120" y2="0" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-105.0" y="-15.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">TER</text>
+  <line x1="-90" y1="-30" x2="-90" y2="0" stroke="black" stroke-width="4" />
+  <line x1="-120" y1="0" x2="-90" y2="0" stroke="black" stroke-width="4" />
+  <text x="-75.0" y="-15.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">ERF</text>
+  <line x1="-60" y1="-30" x2="-60" y2="0" stroke="black" stroke-width="4" />
+  <line x1="-90" y1="0" x2="-60" y2="0" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-45.0" y="-15.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">CAN</text>
+  <line x1="-30" y1="-30" x2="-30" y2="0" stroke="black" stroke-width="4" />
+  <line x1="-60" y1="0" x2="-30" y2="0" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-15.0" y="-15.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">CAE</text>
+  <line x1="0" y1="-30" x2="0" y2="0" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-30" y1="0" x2="0" y2="0" stroke="black" stroke-width="4" />
+  <text x="15.0" y="-15.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">SAR</text>
+  <line x1="30" y1="-30" x2="30" y2="0" stroke="black" stroke-width="4" />
+  <line x1="0" y1="0" x2="30" y2="0" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="45.0" y="-15.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">MAS</text>
+  <line x1="60" y1="-30" x2="60" y2="0" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="30" y1="0" x2="60" y2="0" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="75.0" y="-15.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">SER</text>
+  <line x1="90" y1="-30" x2="90" y2="0" stroke="black" stroke-width="4" />
+  <line x1="60" y1="0" x2="90" y2="0" stroke="black" stroke-width="4" />
+  <text x="105.0" y="-15.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">AUT</text>
+  <line x1="120" y1="-30" x2="120" y2="0" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="90" y1="0" x2="120" y2="0" stroke="black" stroke-width="4" />
+  <text x="135.0" y="-15.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">EME</text>
+  <line x1="150" y1="-30" x2="150" y2="0" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="120" y1="0" x2="150" y2="0" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="165.0" y="-15.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">SIA</text>
+  <line x1="180" y1="-30" x2="180" y2="0" stroke="black" stroke-width="4" />
+  <line x1="150" y1="0" x2="180" y2="0" stroke="black" stroke-width="4" />
+  <rect x="-270" y="0" width="30" height="30" fill="black" />
+  <text x="-225.0" y="15.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">RTI</text>
+  <line x1="-210" y1="0" x2="-210" y2="30" stroke="black" stroke-width="4" />
+  <line x1="-240" y1="30" x2="-210" y2="30" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-195.0" y="15.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">ORI</text>
+  <line x1="-180" y1="0" x2="-180" y2="30" stroke="black" stroke-width="4" />
+  <line x1="-210" y1="30" x2="-180" y2="30" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-165.0" y="15.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">ORS</text>
+  <line x1="-150" y1="0" x2="-150" y2="30" stroke="black" stroke-width="4" />
+  <line x1="-180" y1="30" x2="-150" y2="30" stroke="black" stroke-width="4" />
+  <text x="-135.0" y="15.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">GLY</text>
+  <line x1="-120" y1="0" x2="-120" y2="30" stroke="black" stroke-width="4" />
+  <line x1="-150" y1="30" x2="-120" y2="30" stroke="black" stroke-width="4" />
+  <text x="-105.0" y="15.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">ELE</text>
+  <line x1="-90" y1="0" x2="-90" y2="30" stroke="black" stroke-width="4" />
+  <line x1="-120" y1="30" x2="-90" y2="30" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-75.0" y="15.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">RET</text>
+  <line x1="-60" y1="0" x2="-60" y2="30" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-90" y1="30" x2="-60" y2="30" stroke="black" stroke-width="4" />
+  <text x="-45.0" y="15.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">ICU</text>
+  <line x1="-30" y1="0" x2="-30" y2="30" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-60" y1="30" x2="-30" y2="30" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-15.0" y="15.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">LIN</text>
+  <line x1="0" y1="0" x2="0" y2="30" stroke="black" stroke-width="4" />
+  <line x1="-30" y1="30" x2="0" y2="30" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="15.0" y="15.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">COS</text>
+  <line x1="30" y1="0" x2="30" y2="30" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="0" y1="30" x2="30" y2="30" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="45.0" y="15.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">SAS</text>
+  <line x1="60" y1="0" x2="60" y2="30" stroke="black" stroke-width="4" />
+  <line x1="30" y1="30" x2="60" y2="30" stroke="black" stroke-width="4" />
+  <text x="75.0" y="15.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">ATM</text>
+  <line x1="90" y1="0" x2="90" y2="30" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="60" y1="30" x2="90" y2="30" stroke="black" stroke-width="4" />
+  <text x="105.0" y="15.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">OLY</text>
+  <line x1="120" y1="0" x2="120" y2="30" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="90" y1="30" x2="120" y2="30" stroke="black" stroke-width="4" />
+  <text x="135.0" y="15.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">SIS</text>
+  <line x1="150" y1="0" x2="150" y2="30" stroke="black" stroke-width="4" />
+  <line x1="120" y1="30" x2="150" y2="30" stroke="black" stroke-width="4" />
+  <rect x="150" y="0" width="30" height="30" fill="black" />
+  <text x="-255.0" y="45.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">FUR</text>
+  <line x1="-240" y1="30" x2="-240" y2="60" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-270" y1="60" x2="-240" y2="60" stroke="black" stroke-width="4" />
+  <text x="-225.0" y="45.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">CUL</text>
+  <line x1="-210" y1="30" x2="-210" y2="60" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-240" y1="60" x2="-210" y2="60" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-195.0" y="45.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">UMS</text>
+  <line x1="-180" y1="30" x2="-180" y2="60" stroke="black" stroke-width="4" />
+  <line x1="-210" y1="60" x2="-180" y2="60" stroke="black" stroke-width="4" />
+  <rect x="-180" y="30" width="30" height="30" fill="black" />
+  <rect x="-150" y="30" width="30" height="30" fill="black" />
+  <text x="-105.0" y="45.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">CTR</text>
+  <line x1="-90" y1="30" x2="-90" y2="60" stroke="black" stroke-width="4" />
+  <line x1="-120" y1="60" x2="-90" y2="60" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-75.0" y="45.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">DOR</text>
+  <line x1="-60" y1="30" x2="-60" y2="60" stroke="black" stroke-width="4" />
+  <line x1="-90" y1="60" x2="-60" y2="60" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-45.0" y="45.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">LES</text>
+  <line x1="-30" y1="30" x2="-30" y2="60" stroke="black" stroke-width="4" />
+  <line x1="-60" y1="60" x2="-30" y2="60" stroke="black" stroke-width="4" />
+  <text x="-15.0" y="45.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">OLE</text>
+  <line x1="0" y1="30" x2="0" y2="60" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-30" y1="60" x2="0" y2="60" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="15.0" y="45.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">INS</text>
+  <line x1="30" y1="30" x2="30" y2="60" stroke="black" stroke-width="4" />
+  <line x1="0" y1="60" x2="30" y2="60" stroke="black" stroke-width="4" />
+  <text x="45.0" y="45.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">EXT</text>
+  <line x1="60" y1="30" x2="60" y2="60" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="30" y1="60" x2="60" y2="60" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="75.0" y="45.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">RAG</text>
+  <line x1="90" y1="30" x2="90" y2="60" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="60" y1="60" x2="90" y2="60" stroke="black" stroke-width="4" />
+  <text x="105.0" y="45.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">ENE</text>
+  <line x1="120" y1="30" x2="120" y2="60" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="90" y1="60" x2="120" y2="60" stroke="black" stroke-width="4" />
+  <text x="135.0" y="45.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">OUS</text>
+  <line x1="150" y1="30" x2="150" y2="60" stroke="black" stroke-width="4" />
+  <line x1="120" y1="60" x2="150" y2="60" stroke="black" stroke-width="4" />
+  <rect x="150" y="30" width="30" height="30" fill="black" />
+  <text x="-255.0" y="75.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">PAN</text>
+  <line x1="-240" y1="60" x2="-240" y2="90" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-270" y1="90" x2="-240" y2="90" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-225.0" y="75.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">ATE</text>
+  <line x1="-210" y1="60" x2="-210" y2="90" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-240" y1="90" x2="-210" y2="90" stroke="black" stroke-width="4" />
+  <text x="-195.0" y="75.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">LAS</text>
+  <line x1="-180" y1="60" x2="-180" y2="90" stroke="black" stroke-width="4" />
+  <line x1="-210" y1="90" x2="-180" y2="90" stroke="black" stroke-width="4" />
+  <text x="-165.0" y="75.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">ANG</text>
+  <line x1="-150" y1="60" x2="-150" y2="90" stroke="black" stroke-width="4" />
+  <line x1="-180" y1="90" x2="-150" y2="90" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-135.0" y="75.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">CUS</text>
+  <line x1="-120" y1="60" x2="-120" y2="90" stroke="black" stroke-width="4" />
+  <line x1="-150" y1="90" x2="-120" y2="90" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-105.0" y="75.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">OPH</text>
+  <line x1="-90" y1="60" x2="-90" y2="90" stroke="black" stroke-width="4" />
+  <line x1="-120" y1="90" x2="-90" y2="90" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-75.0" y="75.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">ADI</text>
+  <line x1="-60" y1="60" x2="-60" y2="90" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-90" y1="90" x2="-60" y2="90" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-45.0" y="75.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">ANT</text>
+  <line x1="-30" y1="60" x2="-30" y2="90" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-60" y1="90" x2="-30" y2="90" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-15.0" y="75.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">UMS</text>
+  <line x1="0" y1="60" x2="0" y2="90" stroke="black" stroke-width="4" />
+  <line x1="-30" y1="90" x2="0" y2="90" stroke="black" stroke-width="4" />
+  <text x="15.0" y="75.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">AMO</text>
+  <line x1="30" y1="60" x2="30" y2="90" stroke="black" stroke-width="4" />
+  <line x1="0" y1="90" x2="30" y2="90" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="45.0" y="75.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">REM</text>
+  <line x1="60" y1="60" x2="60" y2="90" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="30" y1="90" x2="60" y2="90" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="75.0" y="75.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">INT</text>
+  <line x1="90" y1="60" x2="90" y2="90" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="60" y1="90" x2="90" y2="90" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="105.0" y="75.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">ING</text>
+  <line x1="120" y1="60" x2="120" y2="90" stroke="black" stroke-width="4" />
+  <line x1="90" y1="90" x2="120" y2="90" stroke="black" stroke-width="4" />
+  <rect x="120" y="60" width="30" height="30" fill="black" />
+  <rect x="150" y="60" width="30" height="30" fill="black" />
+  <text x="-255.0" y="105.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">TET</text>
+  <line x1="-240" y1="90" x2="-240" y2="120" stroke="black" stroke-width="4" />
+  <line x1="-270" y1="120" x2="-240" y2="120" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-225.0" y="105.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">SCO</text>
+  <line x1="-210" y1="90" x2="-210" y2="120" stroke="black" stroke-width="4" />
+  <line x1="-240" y1="120" x2="-210" y2="120" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <rect x="-210" y="90" width="30" height="30" fill="black" />
+  <text x="-165.0" y="105.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">LEP</text>
+  <line x1="-150" y1="90" x2="-150" y2="120" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-180" y1="120" x2="-150" y2="120" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-135.0" y="105.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">TOD</text>
+  <line x1="-120" y1="90" x2="-120" y2="120" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-150" y1="120" x2="-120" y2="120" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-105.0" y="105.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">ORI</text>
+  <line x1="-90" y1="90" x2="-90" y2="120" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-120" y1="120" x2="-90" y2="120" stroke="black" stroke-width="4" />
+  <text x="-75.0" y="105.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">DAE</text>
+  <line x1="-60" y1="90" x2="-60" y2="120" stroke="black" stroke-width="4" />
+  <line x1="-90" y1="120" x2="-60" y2="120" stroke="black" stroke-width="4" />
+  <text x="-45.0" y="105.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">HOL</text>
+  <line x1="-30" y1="90" x2="-30" y2="120" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-60" y1="120" x2="-30" y2="120" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-15.0" y="105.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">OMO</text>
+  <line x1="0" y1="90" x2="0" y2="120" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-30" y1="120" x2="0" y2="120" stroke="black" stroke-width="4" />
+  <text x="15.0" y="105.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">RPH</text>
+  <line x1="30" y1="90" x2="30" y2="120" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="0" y1="120" x2="30" y2="120" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="45.0" y="105.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">ISM</text>
+  <line x1="60" y1="90" x2="60" y2="120" stroke="black" stroke-width="4" />
+  <line x1="30" y1="120" x2="60" y2="120" stroke="black" stroke-width="4" />
+  <text x="75.0" y="105.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">ERS</text>
+  <line x1="90" y1="90" x2="90" y2="120" stroke="black" stroke-width="4" />
+  <line x1="60" y1="120" x2="90" y2="120" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <rect x="90" y="90" width="30" height="30" fill="black" />
+  <rect x="120" y="90" width="30" height="30" fill="black" />
+  <rect x="150" y="90" width="30" height="30" fill="black" />
+  <text x="-255.0" y="135.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">HEI</text>
+  <line x1="-240" y1="120" x2="-240" y2="150" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-270" y1="150" x2="-240" y2="150" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-225.0" y="135.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">RES</text>
+  <line x1="-210" y1="120" x2="-210" y2="150" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-240" y1="150" x2="-210" y2="150" stroke="black" stroke-width="4" />
+  <text x="-195.0" y="135.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">SHO</text>
+  <line x1="-180" y1="120" x2="-180" y2="150" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-210" y1="150" x2="-180" y2="150" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-165.0" y="135.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">ODS</text>
+  <line x1="-150" y1="120" x2="-150" y2="150" stroke="black" stroke-width="4" />
+  <line x1="-180" y1="150" x2="-150" y2="150" stroke="black" stroke-width="4" />
+  <text x="-135.0" y="135.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">IAN</text>
+  <line x1="-120" y1="120" x2="-120" y2="150" stroke="black" stroke-width="4" />
+  <line x1="-150" y1="150" x2="-120" y2="150" stroke="black" stroke-width="4" />
+  <text x="-105.0" y="135.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">RHI</text>
+  <line x1="-90" y1="120" x2="-90" y2="150" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-120" y1="150" x2="-90" y2="150" stroke="black" stroke-width="4" />
+  <text x="-75.0" y="135.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">NOL</text>
+  <line x1="-60" y1="120" x2="-60" y2="150" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-90" y1="150" x2="-60" y2="150" stroke="black" stroke-width="4" />
+  <text x="-45.0" y="135.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">OGI</text>
+  <line x1="-30" y1="120" x2="-30" y2="150" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-60" y1="150" x2="-30" y2="150" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <text x="-15.0" y="135.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">STS</text>
+  <line x1="0" y1="120" x2="0" y2="150" stroke="black" stroke-width="4" />
+  <line x1="-30" y1="150" x2="0" y2="150" stroke="black" stroke-width="4" />
+  <text x="15.0" y="135.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">OUS</text>
+  <line x1="30" y1="120" x2="30" y2="150" stroke="black" stroke-width="4" />
+  <line x1="0" y1="150" x2="30" y2="150" stroke="black" stroke-width="4" />
+  <text x="45.0" y="135.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">FEU</text>
+  <line x1="60" y1="120" x2="60" y2="150" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="30" y1="150" x2="60" y2="150" stroke="black" stroke-width="4" />
+  <text x="75.0" y="135.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">TRE</text>
+  <line x1="90" y1="120" x2="90" y2="150" stroke="black" stroke-width="4" />
+  <line x1="60" y1="150" x2="90" y2="150" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <rect x="90" y="120" width="30" height="30" fill="black" />
+  <rect x="120" y="120" width="30" height="30" fill="black" />
+  <rect x="150" y="120" width="30" height="30" fill="black" />
+  <text x="-255.0" y="165.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">NES</text>
+  <line x1="-240" y1="150" x2="-240" y2="180" stroke="black" stroke-width="4" />
+  <line x1="-270" y1="180" x2="-240" y2="180" stroke="black" stroke-width="4" />
+  <text x="-225.0" y="165.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">BAY</text>
+  <line x1="-210" y1="150" x2="-210" y2="180" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-240" y1="180" x2="-210" y2="180" stroke="black" stroke-width="4" />
+  <text x="-195.0" y="165.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">ADS</text>
+  <line x1="-180" y1="150" x2="-180" y2="180" stroke="black" stroke-width="4" />
+  <line x1="-210" y1="180" x2="-180" y2="180" stroke="black" stroke-width="4" />
+  <rect x="-180" y="150" width="30" height="30" fill="black" />
+  <rect x="-150" y="150" width="30" height="30" fill="black" />
+  <text x="-105.0" y="165.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">GIA</text>
+  <line x1="-90" y1="150" x2="-90" y2="180" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-120" y1="180" x2="-90" y2="180" stroke="black" stroke-width="4" />
+  <text x="-75.0" y="165.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">NTI</text>
+  <line x1="-60" y1="150" x2="-60" y2="180" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="-90" y1="180" x2="-60" y2="180" stroke="black" stroke-width="4" />
+  <text x="-45.0" y="165.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">ZES</text>
+  <line x1="-30" y1="150" x2="-30" y2="180" stroke="black" stroke-width="4" />
+  <line x1="-60" y1="180" x2="-30" y2="180" stroke="black" stroke-width="4" />
+  <rect x="-30" y="150" width="30" height="30" fill="black" />
+  <text x="15.0" y="165.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">FOR</text>
+  <line x1="30" y1="150" x2="30" y2="180" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="0" y1="180" x2="30" y2="180" stroke="black" stroke-width="4" />
+  <text x="45.0" y="165.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">SPE</text>
+  <line x1="60" y1="150" x2="60" y2="180" stroke="rgba(0, 0, 0, 0.2)" stroke-width="2" />
+  <line x1="30" y1="180" x2="60" y2="180" stroke="black" stroke-width="4" />
+  <text x="75.0" y="165.0" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">AKS</text>
+  <line x1="90" y1="150" x2="90" y2="180" stroke="black" stroke-width="4" />
+  <line x1="60" y1="180" x2="90" y2="180" stroke="black" stroke-width="4" />
+  <rect x="90" y="150" width="30" height="30" fill="black" />
+  <rect x="120" y="150" width="30" height="30" fill="black" />
+  <rect x="150" y="150" width="30" height="30" fill="black" />
+</g>
+</svg>
+
