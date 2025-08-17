@@ -2,10 +2,14 @@
 from collections import defaultdict
 from numpy import ndarray
 
+# TODO: use words_by_length
 from .dictionary import words
 
 
 def find_superpuzzitions(target_length: int, target_letters: list[str], target_position: int | None = None, exactly_one_different=False) -> list[tuple[str, str, float]]:
+	# Match dictionary letter case
+	target_letters = [letter.upper() for letter in target_letters]
+
 	words_fitting_length = [word for word in words if len(word) == target_length]
 	if not words_fitting_length:
 		raise ValueError(f"No words in dictionary with length {target_length}")
