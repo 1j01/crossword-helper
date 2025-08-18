@@ -45,7 +45,10 @@ def generate_puzzle(letters_per_cell: int, max_word_length: int, min_chunk_usage
 				next_chunks[chunks[i]].add(chunks[i + 1])
 
 	# Build a grid
+	# seed_cells will be the cells that can still be branched off of (as an optimization)
+	# while cells will hold all placed cells
 	cells: list[Cell] = []
+	seed_cells: list[Cell] = []
 	connections: list[tuple[tuple[int, int], tuple[int, int]]] = []
 	# Start with a random word
 	# TODO: respect grid boundaries (choose a word/direction that fits)
@@ -53,9 +56,23 @@ def generate_puzzle(letters_per_cell: int, max_word_length: int, min_chunk_usage
 	start_word = choice(allowed_words)
 	start_chunks = chunked_words[start_word]
 	for i, chunk in enumerate(start_chunks):
-		cells.append(Cell(position=(i, 0), letters=chunk))
+		new_cell = Cell(position=(i, 0), letters=chunk)
+		seed_cells.append(new_cell)
+		cells.append(new_cell)
 		if i < len(start_chunks) - 1:
 			connections.append(((i, 0), (i + 1, 0)))
+
+	def is_fully_surrounded(cell: Cell) -> bool:
+		"""Check if a cell is enclosed on all four sides by other cells."""
+		# TODO: OR the grid boundary
+		x, y = cell.position
+		neighbors = [
+			(x - 1, y),  # left
+			(x + 1, y),  # right
+			(x, y - 1),  # up
+			(x, y + 1)   # down
+		]
+		return all(any(c.position == neighbor for c in cells) for neighbor in neighbors)
 
 	# Add more words
 	words_placed = 0
@@ -64,8 +81,8 @@ def generate_puzzle(letters_per_cell: int, max_word_length: int, min_chunk_usage
 		# Preferably branch off of cells closer to the origin, to favor a more compact layout
 		# TODO: try other shapes/falloffs, maybe manhattan distance is better, maybe exponent can help
 		# maybe this doesn't matter anymore now that we have hard bounds checking (unless we want to get artistic with the layout)
-		weights = [1 / (hypot(cell.position[0], cell.position[1]) + 1) for cell in cells]
-		cell = choices(cells, weights=weights, k=1)[0]
+		weights = [1 / (hypot(cell.position[0], cell.position[1]) + 1) for cell in seed_cells]
+		cell = choices(seed_cells, weights=weights, k=1)[0]
 		# Pick a random word that can overlap this cell
 		word_to_place = choice(list(words_using_chunk[cell.letters]))
 		chunks_to_place = chunked_words[word_to_place]
@@ -137,8 +154,15 @@ def generate_puzzle(letters_per_cell: int, max_word_length: int, min_chunk_usage
 	
 		# Add the new cells and connections
 		cells.extend(cells_to_place)
+		seed_cells.extend(cells_to_place)
 		for i in range(len(positions) - 1):
 			connections.append((positions[i], positions[i + 1]))
+
+		# Remove seed cells that are now fully surrounded
+		seed_cells = [cell for cell in seed_cells if not is_fully_surrounded(cell)]
+
+		if not seed_cells:
+			break
 
 		words_placed += 1
 		if words_placed >= max_words:
