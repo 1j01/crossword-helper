@@ -65,12 +65,11 @@ def render_grid_svg(cells: list[Cell]) -> str:
 	for y in range(min_y, max_y + 1):
 		for x in range(min_x, max_x + 1):
 			cell = next((c for c in cells if c.position == (x, y)), None)
+			svg += f'  <rect x="{x * cell_width}" y="{y * cell_height}" width="{cell_width}" height="{cell_height}" fill="{"white" if cell else "black"}" />\n'
 			if cell:
 				svg += f'  <text x="{(x + 1/2) * cell_width}" y="{(y + 1/2) * cell_height}" font-size="16" text-anchor="middle" dominant-baseline="middle" fill="black">{cell.letters.upper()}</text>\n'
 				svg += f'  <line x1="{(x + 1) * cell_width}" y1="{y * cell_height}" x2="{(x + 1) * cell_width}" y2="{(y + 1) * cell_height}" stroke="{"black" if cell.barRight else "rgba(0, 0, 0, 0.2)"}" stroke-width="{4 if cell.barRight else 2}" />\n'
 				svg += f'  <line x1="{x * cell_width}" y1="{(y + 1) * cell_height}" x2="{(x + 1) * cell_width}" y2="{(y + 1) * cell_height}" stroke="{"black" if cell.barBottom else "rgba(0, 0, 0, 0.2)"}" stroke-width="{4 if cell.barBottom else 2}" />\n'
-			else:
-				svg += f'  <rect x="{x * cell_width}" y="{y * cell_height}" width="{cell_width}" height="{cell_height}" fill="black" />\n'
 	svg += '</g>\n'
 	svg += '</svg>\n'
 	return svg
