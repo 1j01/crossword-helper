@@ -1,5 +1,6 @@
 
 from collections import defaultdict
+import sys
 from numpy import ndarray
 
 # TODO: use words_by_length
@@ -30,7 +31,7 @@ def find_superpuzzitions(target_length: int, target_letters: list[str], target_p
 				words_by_letter_there[word[target_position]].append(word)
 
 		# TODO: put logs behind a verbose flag
-		print("target_position", target_position, "words_by_letter_there", words_by_letter_there)
+		print("target_position", target_position, "words_by_letter_there", words_by_letter_there, file=sys.stderr)
 
 		# Calculate embeddings by calling model.encode()
 		# TODO: could try looking up definitions of words for better embeddings
@@ -51,7 +52,7 @@ def find_superpuzzitions(target_length: int, target_letters: list[str], target_p
 		if embeddings1 is None or embeddings2 is None:
 			continue # TODO: error handling???
 		similarities = model.similarity(embeddings1, embeddings2)
-		print("similarities", similarities)
+		print("similarities", similarities, file=sys.stderr)
 
 		# Find the word pairs
 		for i, word1 in enumerate(words_by_letter_there[letter1]):

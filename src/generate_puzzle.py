@@ -173,8 +173,8 @@ def generate_puzzle(letters_per_cell: int, max_word_length: int, min_chunk_usage
 		cell.barRight = not any(connection[0] == cell.position and connection[1] == (cell.position[0] + 1, cell.position[1]) for connection in connections)
 		cell.barBottom = not any(connection[0] == cell.position and connection[1] == (cell.position[0], cell.position[1] + 1) for connection in connections)
 
-	# print("words_by_chunk:", words_using_chunk)
-	# print("chunk_counts:", chunk_counts)
-	# print("next_chunks:", next_chunks)
+	# print("words_by_chunk:", words_using_chunk, file=sys.stderr)
+	# print("chunk_counts:", chunk_counts, file=sys.stderr)
+	# print("next_chunks:", next_chunks, file=sys.stderr)
 
 	return cells
