@@ -3,16 +3,14 @@ from collections import defaultdict
 import sys
 from numpy import ndarray
 
-# TODO: use words_by_length
-from .dictionary import words
+from .dictionary import words_by_length
 
 
 def find_superpuzzitions(target_length: int, target_letters: list[str], target_position: int | None = None, exactly_one_different=False) -> list[tuple[str, str, float]]:
 	# Match dictionary letter case
 	target_letters = [letter.upper() for letter in target_letters]
 
-	words_fitting_length = [word for word in words if len(word) == target_length]
-	if not words_fitting_length:
+	if target_length not in words_by_length:
 		raise ValueError(f"No words in dictionary with length {target_length}")
 
 	if exactly_one_different:
@@ -26,7 +24,7 @@ def find_superpuzzitions(target_length: int, target_letters: list[str], target_p
 
 	for target_position in ([target_position] if target_position is not None else range(target_length)):
 		words_by_letter_there: defaultdict[str, list[str]] = defaultdict(list)
-		for word in words_fitting_length:
+		for word in words_by_length[target_length]:
 			if target_position < len(word) and word[target_position] in target_letters:
 				words_by_letter_there[word[target_position]].append(word)
 
