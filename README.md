@@ -52,39 +52,61 @@ See help for more options:
 python -m src.cli superpuzzition --help
 ```
 
-Sample output:
+Sample output (annotated):
 ```
-crims / crimp (score: 0.8819)
-situs / situp (score: 0.8657)
-geest / geeps (score: 0.8642)
-knish / knops (score: 0.8522)
-suses / supes (score: 0.8507)
-knosp / knops (score: 0.8451)
-knops / knosp (score: 0.8451)
-chubs / chump (score: 0.8351)
-louse / loupe (score: 0.8314)
-keles / kelep (score: 0.8279)
-agast / agape (score: 0.8230)
-stirs / stirp (score: 0.8197)
-clees / cleep (score: 0.8172)
-chast / chaps (score: 0.8135)
-woosy / woops (score: 0.8126)
-glums / glump (score: 0.8106)
-salps / salop (score: 0.8072)
-chast / chape (score: 0.8048)
-tipsy / tippy (score: 0.8044)
+CTRLS / CTRLP (score: 0.9132) <- okay
+SITUS / SITUP (score: 0.8657)
+EQUIS / EQUIP (score: 0.8656)
+KRUPS / KRUPP (score: 0.8594)
+GINOS / GINUP (score: 0.8481)
+GINKS / GINUP (score: 0.8445)
+DIPSY / DIPPY (score: 0.8360)
+CHUBS / CHUMP (score: 0.8351) <- good
+SUSAH / SUPAH (score: 0.8341)
+EARSS / EARPS (score: 0.8326)
+ZIPES / ZIPUP (score: 0.8318)
+LOUSE / LOUPE (score: 0.8314)
+KRISS / KRISP (score: 0.8254)
+LIEUS / LIEUP (score: 0.8243)
+GLAMS / GLAMP (score: 0.8234) <- okay
+WISHI / HOPEI (score: 0.8212) <- good
+RASSE / RASPE (score: 0.8204)
+GINKS / GINEP (score: 0.8142)
+CLAPS / CLAPP (score: 0.8140)
+DESPE / DEPEW (score: 0.8136)
+CHAST / CHAPS (score: 0.8135)
+TWEES / TWEEP (score: 0.8075)
+GUMPS / GUMUP (score: 0.8069)
+WAXES / WAXUP (score: 0.8062) <- okay (tense mismatch though)
+BLOIS / BLOOP (score: 0.8048)
+TIPSY / TIPPY (score: 0.8044) <- good
+...
+MIXES / MIXUP (score: 0.7918) <- okay (plural/singular though)
+...
+GOATS / SHEEP (score: 0.7710) <- ⭐ best (not always at the top!)
+...
+BLIPS / ABLIP (score: 0.7675) <- okay (plural/singular though)
+...
+TWITS / TWIRP (score: 0.7661) <- okay (plural/singular though)
+SAYTO / PUTTO (score: 0.7659) <- good
+...
+JAMBS / JAMUP (score: 0.7547) <- okay (tense mismatch though)
 ```
 
-Note that the dictionary has too many uncommon words so the results are very noisy.
+Note that the dictionary has many uncommon words so the results are very noisy.
 
-I believe that the similarity scores will be less useful for uncommon words, more based on spelling, and more arbitrary, due to the machine learning dataset not having enough examples of these words, which will bias it towards uncommon words. In fact it may consider all unknown words more similar to each other than known words, as a by-product of trying to sort the embeddings to be distant from each other, only for words in the training data.
+I believe that the similarity scores will be less accurate for uncommon words (more based on spelling, and more arbitrary), due to the machine learning dataset not having enough examples of these words, which will bias it towards uncommon words. It may even consider all unknown words more similar to each other than known words, as a by-product of trying to sort the embeddings to be distant from each other, taking into account only words that it's trained on.
 
 However there are some gems in the rough:
-- crab / ribs (score: 0.5713) could be clued with "Meaty dish"
-- vial / labs (score: 0.5460) could be clued with "What may be used for science experiments" (awkwardly avoiding plural/singular hint; probably a better way)
-- spas / tubs (score: 0.5303) could be clued with "Places to soak and relax"
+- CRAB / RIBS (score: 0.5713) could be clued with "Meaty dish"
+- VIAL / LABS (score: 0.5460) could be clued with "What may be used for science experiments" (awkwardly avoiding plural/singular hint; probably a better way)
+- SPAS / TUBS (score: 0.5303) could be clued with "Places to soak and relax"
 
-A simple fix will be to use a smaller dictionary of more common words, or even a crossword answer database, which would be more suited to the purpose because it could contain multi-word answers and punny nonstandard spellings etc. while being generally more clueable, and perhaps including suggested clues while we're at it.
+It now uses the crosshare curated word list, which is much better since it's focused on clueable words, and also includes multi-word answers.
+
+TODO: Take the score information from the word list into account when sorting results. This should help cut through the noise!
+
+TODO: Allow matching more complex patterns, such as `__A_(E/S)(H/S)_` where a grid contains `A_EH` and `A_SS` superimposed.
 
 ## License
 
