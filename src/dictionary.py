@@ -15,7 +15,7 @@ with open('data/worddb.json', 'r', encoding='utf-8') as f:
     worddb = json.load(f)
     words_by_length: dict[int, list[str]] = {}
     for length, words_of_length in worddb['words'].items():
-        words_by_length[length] = [word for word, score in words_of_length]
+        words_by_length[int(length)] = [word for word, score in words_of_length]
     words = [word for sublist in words_by_length.values() for word in sublist]
 
 print(f"Loaded {len(words)} words from worddb.json", file=sys.stderr)
