@@ -32,9 +32,9 @@ def main():
 
     if args.command == 'superpuzzition':
         target_patterns = [re.compile(l.strip(), re.IGNORECASE) for l in args.letters]
-        pairs = find_superpuzzitions(args.length, target_patterns, args.position, args.exactly_one_different)
-        for pair in pairs[:args.max_results]:
-            print(pair[0] + " / " + pair[1] + " (score: " + f"{pair[2]:.4f}" + ")")
+        results = find_superpuzzitions(args.length, target_patterns, args.position, args.exactly_one_different)
+        for result in results[:args.max_results]:
+            print(f"{' / '.join(result.words)} (score: {result.score:.4f})")
     elif args.command == 'gen-puzzle':
         cells = generate_puzzle(args.letters_per_cell, args.max_word_length, args.min_chunk_usage, args.max_placement_attempts, args.max_words, args.max_width, args.max_height)
         if args.format == 'ascii':
