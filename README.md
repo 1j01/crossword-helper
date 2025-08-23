@@ -5,7 +5,7 @@ This project is a command-line interface (CLI) tool designed assist in making ce
 ## Features
 
 - Generate rebus puzzles where every cell contains a specific number of letters.
-- For schrodinger puzzles, find words that have similar meanings but specific different letters in a given position, and match in length. I'm calling these "superpuzzitions". This is useful when you already have one superpuzzition and you want to find crossing words that have to now match multiple different letters to fit two grids simultaneously.
+- For schrodinger puzzles, search for combinations of words that have similar meanings but match certain different letters in the same positions, in order to create crossings on a grid that has superimposed words.
 
 ## Installation
 
@@ -107,7 +107,7 @@ It now uses the crosshare curated word list, which is much better since it's foc
 TODO: Take the score information from the word list into account when sorting results. This should help cut through the noise!
 
 
-To find superpuzzitions matching a board that is more filled, say where a grid contains `A_EH` and `A_SS` superimposed, you might specify a list of regexp patterns instead of simple letters:
+To find superpuzzitions matching a board that is more filled, say where a grid contains `A_EH` and `A_SS` superimposed, you can specify a list of regular expression patterns instead of simple letters:
 ```bash
 python -m src.cli superpuzzition --length 5 a.eh a.ss
 ```
