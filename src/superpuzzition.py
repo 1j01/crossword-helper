@@ -1,13 +1,17 @@
 
 from collections import defaultdict
+import itertools
 from typing import NamedTuple
 import re
 import sys
 
+from numpy import ndarray
+from torch import Tensor
+
 from .dictionary import words_by_length
 
 class SuperpuzzitionResult(NamedTuple):
-	words: list[str]
+	words: tuple[str, ...]
 	score: float
 
 def find_superpuzzitions(target_length: int | None, target_patterns: list[re.Pattern], target_position: int | None = None, exactly_one_different=False) -> list[SuperpuzzitionResult]:
@@ -62,7 +66,7 @@ def find_superpuzzitions(target_length: int | None, target_patterns: list[re.Pat
 				pattern = target_patterns[0]
 				if str(pattern) in words_by_pattern:
 					for word in words_by_pattern[str(pattern)]:
-						results.append(SuperpuzzitionResult([word], 1))
+						results.append(SuperpuzzitionResult((word,), 1))
 			else:
 				# Calculate embeddings by calling model.encode()
 				# TODO: could try looking up definitions of words for better embeddings
@@ -72,21 +76,29 @@ def find_superpuzzitions(target_length: int | None, target_patterns: list[re.Pat
 				embeddings_by_pattern = { k: model.encode(v) for k, v in words_by_pattern.items() }
 
 				# Calculate the embedding similarities
-				if len(target_patterns) != 2:
-					raise ValueError("Exactly one or two target patterns must be specified.")
-				p1, p2 = target_patterns
-				embeddings1 = embeddings_by_pattern.get(str(p1))
-				embeddings2 = embeddings_by_pattern.get(str(p2))
-				if embeddings1 is None or embeddings2 is None:
-					continue # TODO: error handling???
-				similarities = model.similarity(embeddings1, embeddings2)
-				print("similarities", similarities, file=sys.stderr)
+				similarities_by_pattern_pair: dict[tuple[re.Pattern, re.Pattern], Tensor] = {}
+				for p1, p2 in itertools.combinations(target_patterns, 2):
+					embeddings1 = embeddings_by_pattern.get(str(p1))
+					embeddings2 = embeddings_by_pattern.get(str(p2))
+					if embeddings1 is None or embeddings2 is None:
+						continue # TODO: error handling???
+					similarities = model.similarity(embeddings1, embeddings2)
+					print("similarities", similarities, file=sys.stderr)
+					similarities_by_pattern_pair[(p1, p2)] = similarities
 
-				# Find the word pairs
-				for i, word1 in enumerate(words_by_pattern[str(p1)]):
-					for j, word2 in enumerate(words_by_pattern[str(p2)]):
-						score = similarities[i][j].item()
-						results.append(SuperpuzzitionResult([word1, word2], score))
+				# for i, word1 in enumerate(words_by_pattern[str(p1)]):
+				# 	for j, word2 in enumerate(words_by_pattern[str(p2)]):
+				# Find the word tuples that visit each pattern once
+				for word_tuple in itertools.product(*[words_by_pattern.get(str(p), []) for p in target_patterns]):
+					score = 1.0
+					for p1, p2 in itertools.combinations(target_patterns, 2):
+						similarities = similarities_by_pattern_pair[(p1, p2)]
+						# TODO: avoid finding indices when we could just keep track of them in the loop
+						# (we could map to (index, word) tuples before using itertools.product)
+						i = words_by_pattern[str(p1)].index(word_tuple[target_patterns.index(p1)])
+						j = words_by_pattern[str(p2)].index(word_tuple[target_patterns.index(p2)])
+						score *= similarities[i][j].item()
+					results.append(SuperpuzzitionResult(word_tuple, score))
 
 	if not some_words_of_target_length:
 		raise ValueError("No words of the specified target length(s) were found in the word list.")
