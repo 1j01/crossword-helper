@@ -1,4 +1,5 @@
 import argparse
+import re
 from .generate_puzzle import generate_puzzle
 from .superpuzzition import find_superpuzzitions
 from .render import render_grid_ascii, render_grid_html, render_grid_svg
@@ -13,7 +14,7 @@ def main():
     superpuzzition_parser.add_argument('--exactly-one-different', action='store_true', help='Only find pairs where one letter is different (default: False)')
     superpuzzition_parser.add_argument('--position', type=int, default=None, help='Position to compare (0-based, optional; can be negative to look from the end, -1 being the last letter)')
     superpuzzition_parser.add_argument('--max-results', type=int, default=100, help='Maximum number of pairs to return (default: 100)')
-    superpuzzition_parser.add_argument('letters', nargs='+', type=str, help='Letters to compare (provide two or more, comma-separated)')
+    superpuzzition_parser.add_argument('letters', nargs='+', type=str, help='Regular expression patterns for each superimposed grid to match words against')
 
     # gen-puzzle subcommand
     gen_puzzle_parser = subparsers.add_parser('gen-puzzle', help='Generate a crossword puzzle')
@@ -30,8 +31,8 @@ def main():
     args = parser.parse_args()
 
     if args.command == 'superpuzzition':
-        target_letters = [l.strip() for l in args.letters]
-        pairs = find_superpuzzitions(args.length, target_letters, args.position, args.exactly_one_different)
+        target_patterns = [re.compile(l.strip(), re.IGNORECASE) for l in args.letters]
+        pairs = find_superpuzzitions(args.length, target_patterns, args.position, args.exactly_one_different)
         for pair in pairs[:args.max_results]:
             print(pair[0] + " / " + pair[1] + " (score: " + f"{pair[2]:.4f}" + ")")
     elif args.command == 'gen-puzzle':

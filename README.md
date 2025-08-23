@@ -106,7 +106,14 @@ It now uses the crosshare curated word list, which is much better since it's foc
 
 TODO: Take the score information from the word list into account when sorting results. This should help cut through the noise!
 
-TODO: Allow matching more complex patterns, such as `__A_(E/S)(H/S)_` where a grid contains `A_EH` and `A_SS` superimposed.
+
+To find superpuzzitions matching a board that is more filled, say where a grid contains `A_EH` and `A_SS` superimposed, you might specify a list of regexp patterns instead of simple letters:
+```bash
+python -m src.cli superpuzzition --length 5 a.eh a.ss
+```
+`.` is a placeholder for a single letter.
+
+In the future patterns like `a.[es][hs]` or `a.(e|s)(h|s)` might be supported to do the same thing in a single pattern, but right now you have to specify a pattern for each superimposed grid.
 
 ## License
 
