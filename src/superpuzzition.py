@@ -98,7 +98,14 @@ def find_superpuzzitions(target_length: int | None, target_patterns: list[re.Pat
 						# (we could map to (index, word) tuples before using itertools.product)
 						i = words_by_pattern[str(p1)].index(word_tuple[target_patterns.index(p1)])
 						j = words_by_pattern[str(p2)].index(word_tuple[target_patterns.index(p2)])
+						# TODO: does multiplying similarities make sense?
+						# seems dubious especially for negative similarities, since it would flip-flop, right?
+						# two negatives would make it positive again
 						score *= similarities[i][j].item()
+					if score <= 0:
+						# geometric mean calculation would turn score into a complex number
+						# and lead to run-time errors
+						continue
 					num_pairs = len(target_patterns) * (len(target_patterns) - 1) / 2
 					score = score ** (1 / num_pairs) # geometric mean
 					results.append(SuperpuzzitionResult(word_tuple, score))
