@@ -5,7 +5,6 @@ from typing import NamedTuple
 import re
 import sys
 
-from numpy import ndarray
 from torch import Tensor
 
 from .dictionary import words_by_length
