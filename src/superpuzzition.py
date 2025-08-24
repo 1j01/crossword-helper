@@ -1,9 +1,9 @@
 
 from collections import defaultdict
 import itertools
+import logging
 from typing import NamedTuple
 import re
-import sys
 
 from torch import Tensor
 
@@ -62,8 +62,7 @@ def find_superpuzzitions(
 							words_by_pattern[str(pattern)].append(word)
 							break
 
-			# TODO: put logs behind a verbose flag
-			print("target_position", target_position, "words_by_pattern", words_by_pattern, file=sys.stderr)
+			logging.info(f"target_position {target_position}, words_by_pattern {words_by_pattern}")
 
 			if len(target_patterns) == 1:
 				# In case of just one pattern, don't need to compute embeddings
@@ -88,7 +87,7 @@ def find_superpuzzitions(
 					if embeddings1 is None or embeddings2 is None:
 						continue # TODO: error handling???
 					similarities = model.similarity(embeddings1, embeddings2)
-					print("similarities", similarities, file=sys.stderr)
+					logging.info(f"similarities: {similarities}")
 					similarities_by_pattern_pair[(p1, p2)] = similarities
 
 				# for i, word1 in enumerate(words_by_pattern[str(p1)]):

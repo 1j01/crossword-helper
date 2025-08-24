@@ -1,4 +1,5 @@
 import argparse
+import logging
 import re
 
 from src.dictionary import load_words
@@ -8,7 +9,20 @@ from .render import render_grid_ascii, render_grid_html, render_grid_svg
 
 def main():
     parser = argparse.ArgumentParser(description='Crossword Helper CLI')
+
+    # parser.add_argument(
+    #     '-d', '--debug',
+    #     help="Print lots of debugging statements (more than verbose)",
+    #     action="store_const", dest="loglevel", const=logging.DEBUG,
+    #     default=logging.WARNING,
+    # )
+    parser.add_argument(
+        '-v', '--verbose',
+        help="Output more information",
+        action="store_const", dest="loglevel", const=logging.INFO,
+    )
     parser.add_argument('--min-quality', type=float, default=2, help='Minimum word quality score in range 0-3, distinct from result scores (default: 2)')
+
     subparsers = parser.add_subparsers(dest='command', required=True)
 
     # superpuzzition subcommand
@@ -32,6 +46,8 @@ def main():
     gen_puzzle_parser.add_argument('--max-height', type=int, default=15, help='Maximum grid height (default: 15)')
 
     args = parser.parse_args()
+
+    logging.basicConfig(level=args.loglevel)
 
     words, words_by_length = load_words(score_filter=0.5)
 

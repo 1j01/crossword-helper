@@ -1,6 +1,5 @@
-from collections import defaultdict
 import json
-import sys
+import logging
 
 def load_words(score_filter: float | None = None) -> tuple[list[str], dict[int, list[str]]]:
     """Load words from a word database JSON file, optionally filtering on word quality."""
@@ -17,14 +16,14 @@ def load_words(score_filter: float | None = None) -> tuple[list[str], dict[int, 
         worddb = json.load(f)
         words_by_length: dict[int, list[str]] = {}
         all_quality_scores = [score for length, words_of_length in worddb['words'].items() for word, score in words_of_length]
-        print(f"Quality scores: min {min(all_quality_scores)}, max {max(all_quality_scores)}, mean {sum(all_quality_scores) / len(all_quality_scores):.4f}", file=sys.stderr)
+        logging.info(f"Quality scores: min {min(all_quality_scores)}, max {max(all_quality_scores)}, mean {sum(all_quality_scores) / len(all_quality_scores):.4f}")
         for length, words_of_length in worddb['words'].items():
             words_by_length[int(length)] = [word for word, score in words_of_length if score_filter is None or score >= score_filter]
         words = [word for sublist in words_by_length.values() for word in sublist]
 
-    print(f"Loaded {len(words)} words from worddb.json", file=sys.stderr)
-    print(f"First 10 words: {words[:10]}", file=sys.stderr)
-    print(f"Last 10 words: {words[-10:]}", file=sys.stderr)
+    logging.info(f"Loaded {len(words)} words from worddb.json")
+    logging.info(f"First 10 words: {words[:10]}")
+    logging.info(f"Last 10 words: {words[-10:]}")
 
     return words, words_by_length
 
