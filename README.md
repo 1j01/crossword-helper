@@ -24,7 +24,7 @@ pip install -r requirements.txt
 To generate a crossword, try running the following command:
 
 ```bash
-python -m src.cli gen-puzzle --max-words 100 --letters-per-cell 3 --format svg >xw.svg
+python -m src.cli gen-puzzle --letters-per-cell 3 --format svg >xw.svg
 ```
 
 Then open xw.svg in your browser or an SVG editor.
@@ -36,8 +36,6 @@ python -m src.cli gen-puzzle --help
 
 Sample output:
 ![sample crossword with 3 letters per cell](sample-xw.svg)
-
-(I like the "AMORPHOUS" that ended up in a plus shape. Amorphous+ is a great game.)
 
 
 ### `superpuzzition` command
