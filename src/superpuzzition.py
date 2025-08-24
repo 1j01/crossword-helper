@@ -7,13 +7,17 @@ import sys
 
 from torch import Tensor
 
-from .dictionary import words_by_length
-
 class SuperpuzzitionResult(NamedTuple):
 	words: tuple[str, ...]
 	score: float
 
-def find_superpuzzitions(target_length: int | None, target_patterns: list[re.Pattern], target_position: int | None = None, exactly_one_different=False) -> list[SuperpuzzitionResult]:
+def find_superpuzzitions(
+	words_by_length: dict[int, list[str]],
+	target_length: int | None, 
+	target_patterns: list[re.Pattern], 
+	target_position: int | None = None, 
+	exactly_one_different=False
+) -> list[SuperpuzzitionResult]:
 	"""
 	Find and rank candidate word pairs that fit divergent grids for Schrodinger puzzles.
 	

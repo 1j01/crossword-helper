@@ -3,7 +3,6 @@ from dataclasses import dataclass
 from random import choice, choices
 from math import hypot
 
-from .dictionary import words
 
 @dataclass
 class Cell:
@@ -12,7 +11,16 @@ class Cell:
 	barRight: bool = False
 	barBottom: bool = False
 
-def generate_puzzle(letters_per_cell: int, max_word_length: int, min_chunk_usage: int, max_placement_attempts: int, max_words: int, max_width: int, max_height: int) -> list[Cell]:
+def generate_puzzle(
+	words: list[str],
+	letters_per_cell: int,
+	max_word_length: int,
+	min_chunk_usage: int,
+	max_placement_attempts: int,
+	max_words: int,
+	max_width: int,
+	max_height: int
+) -> list[Cell]:
 	chunked_words: dict[str, list[str]] = dict()
 	words_using_chunk: dict[str, set[str]] = defaultdict(set)
 	chunk_counts: Counter[str] = Counter()

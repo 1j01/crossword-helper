@@ -1,11 +1,14 @@
 import argparse
 import re
+
+from src.dictionary import load_words
 from .generate_puzzle import generate_puzzle
 from .superpuzzition import find_superpuzzitions
 from .render import render_grid_ascii, render_grid_html, render_grid_svg
 
 def main():
     parser = argparse.ArgumentParser(description='Crossword Helper CLI')
+    parser.add_argument('--min-quality', type=float, default=2, help='Minimum word quality score in range 0-3, distinct from result scores (default: 2)')
     subparsers = parser.add_subparsers(dest='command', required=True)
 
     # superpuzzition subcommand
@@ -30,13 +33,15 @@ def main():
 
     args = parser.parse_args()
 
+    words, words_by_length = load_words(score_filter=0.5)
+
     if args.command == 'superpuzzition':
         target_patterns = [re.compile(l.strip(), re.IGNORECASE) for l in args.letters]
-        results = find_superpuzzitions(args.length, target_patterns, args.position, args.exactly_one_different)
+        results = find_superpuzzitions(words_by_length, args.length, target_patterns, args.position, args.exactly_one_different)
         for result in results[:args.max_results]:
             print(f"{' / '.join(result.words)} (score: {result.score:.4f})")
     elif args.command == 'gen-puzzle':
-        cells = generate_puzzle(args.letters_per_cell, args.max_word_length, args.min_chunk_usage, args.max_placement_attempts, args.max_words, args.max_width, args.max_height)
+        cells = generate_puzzle(words, args.letters_per_cell, args.max_word_length, args.min_chunk_usage, args.max_placement_attempts, args.max_words, args.max_width, args.max_height)
         if args.format == 'ascii':
             print(render_grid_ascii(cells))
         elif args.format == 'html':
