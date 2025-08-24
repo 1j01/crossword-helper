@@ -83,7 +83,7 @@ def generate_puzzle(
 		return all(any(c.position == neighbor for c in cells) for neighbor in neighbors)
 
 	# Add more words
-	words_placed = 0
+	placed_words: set[str] = set()
 	for _ in range(max_placement_attempts):
 		# Pick a random cell to branch off from
 		# Preferably branch off of cells closer to the origin, to favor a more compact layout
@@ -93,6 +93,9 @@ def generate_puzzle(
 		cell = choices(seed_cells, weights=weights, k=1)[0]
 		# Pick a random word that can overlap this cell
 		word_to_place = choice(list(words_using_chunk[cell.letters]))
+		# Only allow unique words
+		if word_to_place in placed_words:
+			continue
 		chunks_to_place = chunked_words[word_to_place]
 		# Find the overlap (there may be multiple possible overlap points)
 		matching_indices = [i for i, chunk in enumerate(chunks_to_place) if chunk == cell.letters]
@@ -172,8 +175,8 @@ def generate_puzzle(
 		if not seed_cells:
 			break
 
-		words_placed += 1
-		if words_placed >= max_words:
+		placed_words.add(chunk)
+		if len(placed_words) >= max_words:
 			break
 
 	# Calculate bars
