@@ -97,6 +97,8 @@ def find_superpuzzitions(target_length: int | None, target_patterns: list[re.Pat
 						i = words_by_pattern[str(p1)].index(word_tuple[target_patterns.index(p1)])
 						j = words_by_pattern[str(p2)].index(word_tuple[target_patterns.index(p2)])
 						score *= similarities[i][j].item()
+					num_pairs = len(target_patterns) * (len(target_patterns) - 1) / 2
+					score = score ** (1 / num_pairs) # geometric mean
 					results.append(SuperpuzzitionResult(word_tuple, score))
 
 	if not some_words_of_target_length:
