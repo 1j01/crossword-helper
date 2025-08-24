@@ -39,13 +39,15 @@ def find_superpuzzitions(target_length: int | None, target_patterns: list[re.Pat
 	from sentence_transformers import SentenceTransformer
 	model = SentenceTransformer("all-MiniLM-L6-v2")
 
+	tl = target_length # doesn't matter because it's the outer loop
+	tp = target_position # needed for inner loop to avoid overwriting variable
 	some_words_of_target_length = False
-	for target_length in ([target_length] if target_length is not None else words_by_length.keys()):
+	for target_length in ([tl] if tl is not None else words_by_length.keys()):
 		if target_length not in words_by_length:
 			continue
 		some_words_of_target_length = True
 
-		for target_position in ([target_position] if target_position is not None else range(target_length)):
+		for target_position in ([tp] if tp is not None else range(target_length)):
 			words_by_pattern: defaultdict[str, list[str]] = defaultdict(list)
 			for word in words_by_length[target_length]:
 				if target_position < len(word): #and word[target_position] in target_letters:
