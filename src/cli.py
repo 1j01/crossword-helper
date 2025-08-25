@@ -26,12 +26,21 @@ def main():
     subparsers = parser.add_subparsers(dest='command', required=True)
 
     # superpuzzition subcommand
+    # TODO: rename to "find-words" or "word-search" or something
+    # since it's useful for more than schrodinger puzzles
     superpuzzition_parser = subparsers.add_parser('superpuzzition', help='Find word pairs with specific letter differences')
     superpuzzition_parser.add_argument('--length', type=int, default=None, help='Target word length')
     superpuzzition_parser.add_argument('--exactly-one-different', action='store_true', help='Only find pairs where one letter is different (default: False)')
     superpuzzition_parser.add_argument('--position', type=int, default=None, help='Position to compare (0-based, optional; can be negative to look from the end, -1 being the last letter)')
     superpuzzition_parser.add_argument('--max-results', type=int, default=100, help='Maximum number of pairs to return (default: 100)')
     superpuzzition_parser.add_argument('letters', nargs='+', type=str, help='Regular expression patterns for each superimposed grid to match words against')
+
+    # join subcommand
+    # experimental, might become part of word search
+    join_parser = subparsers.add_parser('join', help='Forms longer answers by joining words from multiple lists, where the word lengths sum to the target length')
+    join_parser.add_argument('--length', type=int, required=True, help='Target word length')
+    join_parser.add_argument('--max-results', type=int, default=10000, help='Maximum number of pairs to return (default: %(default)s)')
+    join_parser.add_argument('files', nargs='+', type=str, help='Text files containing word lists, one word per line')
 
     # gen-puzzle subcommand
     gen_puzzle_parser = subparsers.add_parser('gen-puzzle', help='Generate a crossword puzzle')
@@ -64,6 +73,19 @@ def main():
             print(render_grid_html(cells))
         elif args.format == 'svg':
             print(render_grid_svg(cells))
+    elif args.command == 'join':
+        from .join import join_words
+        word_lists = []
+        for filename in args.files:
+            with open(filename, 'r') as f:
+                words = [line.strip() for line in f if line.strip()]
+                word_lists.append(words)
+        results = join_words(word_lists, args.length)
+        for result in results[:args.max_results]:
+            print(f"{'|'.join(result.words)} (score: {result.score:.4f})")
+    else:
+        # might only happen in development when a new subcommand is added but not handled yet
+        parser.print_help()
 
 if __name__ == '__main__':
     main()
