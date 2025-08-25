@@ -40,6 +40,7 @@ def main():
     join_parser = subparsers.add_parser('join', help='Forms longer answers by joining words from multiple lists, where the word lengths sum to the target length')
     join_parser.add_argument('--length', type=int, required=True, help='Target word length')
     join_parser.add_argument('--max-results', type=int, default=10000, help='Maximum number of pairs to return (default: %(default)s)')
+    join_parser.add_argument('--sort-by-cromulence', action='store_true', help='Try to sort results by meaningfulness (default: False)')
     join_parser.add_argument('files', nargs='+', type=str, help='Text files containing word lists, one word per line')
 
     # gen-puzzle subcommand
