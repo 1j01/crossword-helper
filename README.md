@@ -132,6 +132,6 @@ These are not necessarily planned features, but just ideas.
 
 ## License
 
-This project is licensed under CC0 License.
+This project is licensed under [CC0 1.0 License](https://creativecommons.org/publicdomain/zero/1.0/). It is dedicated to the public domain.
 
 This license does not apply to the word data included in the repo.
