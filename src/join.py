@@ -37,13 +37,29 @@ def join_words(
 		results.append(JoinResult(words=words, score=score))
 
 	# Try to sort by meaningfulness
-	# TODO: assess the validity of this approach
-	# maybe try an average of several reasonable and unreasonable/unwanted phrases
+	# This approach is fraut because it requires balancing
+	# concepts on either side of the subtraction
+	# For instance, if the positive list has "BEAUTIFULSUNSETS"
+	# it will favor the word sunset unless it is balanced by "SUNSETS TURKEYS"
+	# or something in the negative list.
+	# And comparing absolute embeddings to a relative vector might tend towards
+	# favoring things with smaller magnitudes
 	from sentence_transformers import SentenceTransformer
 	model = SentenceTransformer("all-MiniLM-L6-v2")
 	embeddings = model.encode([' '.join(result.words) for result in results])
-	nonsense_embedding = model.encode(["Zxc,mnwerslkfdjSFDKJ"])[0]
-	reasonable_embedding = model.encode(["A very reasonable phrase"])[0]
+	def average_embedding(texts: list[str]):
+		vecs = model.encode(texts)
+		return sum(vecs) / len(vecs)
+	nonsense_embedding = average_embedding([
+		"Zxc,mnwerslkfdjSFDKJ",
+		"CUPCAKESASSESSAS",
+		"SUNSETS DESPISALS",
+	])
+	reasonable_embedding = average_embedding([
+		"A very reasonable phrase",
+		"BEAUTIFULSUNSETS",
+		"CURIOUSITY KILLEDTHECAT",
+	])
 	reasonableness_vector = reasonable_embedding - nonsense_embedding
 	for i, result in enumerate(results):
 		result_embedding = embeddings[i]
