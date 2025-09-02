@@ -129,6 +129,11 @@ These are not necessarily planned features, but just ideas.
   - You can always do this externally, and many people would want to disable this, so it should be optional. 
   - Also, while LLMs are good at word association (thesaurus is one of the best use cases, IMO!), they're really bad about thinking from the solver's perspective, and separately considering whether a clue works for each word rather than either *the set of both* or *just one* (or *neither*).
   - So this would involve a multi-step process of asking it whether a clue works for each word, ideally probably without the context of the other word (maybe even without the context of the answer, asking it to solve the clue on its own), and then asking it to refine the clue until it works for both. But it likely would fail to do the refinement anyways, so it might be a lot of trouble for nothing. I will say though that asking it to brainstorm connections between words before asking for clues can help.
+- Could allow semantic search input, for puzzle generation and word search.
+  - Should be pretty easy to do with `sentence-transformers` package already used for word similarity.
+  - Could include options for weighting word set similarity vs similarity to the semantic input.
+  - For puzzle generation, could start with a high matching threshold and back off until it can fill the grid.
+  - For puzzle generation, it might end up generating puzzles with very similar words, such as inflections of the same root word.
 
 ## License
 
