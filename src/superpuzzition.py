@@ -79,9 +79,19 @@ def find_superpuzzitions(
 
 				embeddings_by_pattern = { k: model.encode(v) for k, v in words_by_pattern.items() }
 
+				def comparisons():
+					# Previously:
+					# return itertools.combinations(target_patterns, 2)
+
+					# Since model.similarity is very expensive, let's avoid combinatoric explosion
+					# and only compare 0-1, 1-2, 2-3 and maybe wrapping around like 3-0
+					# This might mean that the order of patterns affects rankings,
+					# but it might not be significant
+					return [(target_patterns[i], target_patterns[(i + 1) % len(target_patterns)]) for i in range(len(target_patterns))]
+
 				# Calculate the embedding similarities
 				similarities_by_pattern_pair: dict[tuple[re.Pattern, re.Pattern], Tensor] = {}
-				for p1, p2 in itertools.combinations(target_patterns, 2):
+				for p1, p2 in comparisons():
 					embeddings1 = embeddings_by_pattern.get(str(p1))
 					embeddings2 = embeddings_by_pattern.get(str(p2))
 					if embeddings1 is None or embeddings2 is None:
@@ -95,7 +105,7 @@ def find_superpuzzitions(
 				# Find the word tuples that visit each pattern once
 				for word_tuple in itertools.product(*[words_by_pattern.get(str(p), []) for p in target_patterns]):
 					score = 1.0
-					for p1, p2 in itertools.combinations(target_patterns, 2):
+					for p1, p2 in comparisons():
 						similarities = similarities_by_pattern_pair[(p1, p2)]
 						# TODO: avoid finding indices when we could just keep track of them in the loop
 						# (we could map to (index, word) tuples before using itertools.product)
