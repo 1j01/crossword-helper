@@ -29,7 +29,9 @@ def main():
     # TODO: rename to "find-words" or "word-search" or something
     # since it's useful for more than schrodinger puzzles
     superpuzzition_parser = subparsers.add_parser('superpuzzition', help='Find word pairs with specific letter differences')
-    superpuzzition_parser.add_argument('--length', type=int, default=None, help='Target word length')
+    superpuzzition_parser.add_argument('--length', type=int, default=None, help='Shortcut for --min-length and --max-length')
+    superpuzzition_parser.add_argument('--min-length', type=int, default=None, help='Minimum word length')
+    superpuzzition_parser.add_argument('--max-length', type=int, default=None, help='Maximum word length')
     superpuzzition_parser.add_argument('--exactly-one-different', action='store_true', help='Only find pairs where one letter is different (default: False)')
     superpuzzition_parser.add_argument('--position', type=int, default=None, help='Position to compare (0-based, optional; can be negative to look from the end, -1 being the last letter)')
     superpuzzition_parser.add_argument('--max-results', type=int, default=100, help='Maximum number of pairs to return (default: 100)')
@@ -63,7 +65,9 @@ def main():
 
     if args.command == 'superpuzzition':
         target_patterns = [re.compile(l.strip(), re.IGNORECASE) for l in args.letters]
-        results = find_superpuzzitions(words_by_length, args.length, target_patterns, args.position, args.exactly_one_different)
+        min_length = args.min_length if args.min_length is not None else (args.length if args.length is not None else 1)
+        max_length = args.max_length if args.max_length is not None else (args.length if args.length is not None else 10000)
+        results = find_superpuzzitions(words_by_length, min_length, max_length, target_patterns, args.position, args.exactly_one_different)
         for result in results[:args.max_results]:
             print(f"{' / '.join(result.words)} (score: {result.score:.4f})")
     elif args.command == 'gen-puzzle':

@@ -13,7 +13,8 @@ class SuperpuzzitionResult(NamedTuple):
 
 def find_superpuzzitions(
 	words_by_length: dict[int, list[str]],
-	target_length: int | None, 
+	min_length: int | None, 
+	max_length: int | None,
 	target_patterns: list[re.Pattern], 
 	target_position: int | None = None, 
 	exactly_one_different=False
@@ -43,10 +44,10 @@ def find_superpuzzitions(
 	from sentence_transformers import SentenceTransformer
 	model = SentenceTransformer("all-MiniLM-L6-v2")
 
-	tl = target_length # doesn't matter because it's the outer loop
+	target_length_range = range(min_length if min_length is not None else 1, (max_length if max_length is not None else 10000) + 1)
 	tp = target_position # needed for inner loop to avoid overwriting variable
 	some_words_of_target_length = False
-	for target_length in ([tl] if tl is not None else words_by_length.keys()):
+	for target_length in target_length_range:
 		if target_length not in words_by_length:
 			continue
 		some_words_of_target_length = True
