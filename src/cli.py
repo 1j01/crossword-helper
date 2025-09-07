@@ -45,6 +45,12 @@ def main():
     join_parser.add_argument('--sort-by-cromulence', action='store_true', help='Try to sort results by meaningfulness (default: False)')
     join_parser.add_argument('files', nargs='+', type=str, help='Text files containing word lists, one word per line')
 
+    # draggable subcommand
+    # experimental, related to word search / join
+    # a manual workflow for drawing connections between words
+    draggable_parser = subparsers.add_parser('draggable', help='Generate an SVG with draggable words from multiple lists')
+    draggable_parser.add_argument('files', nargs='+', type=str, help='Text files containing word lists, one word per line')
+
     # gen-puzzle subcommand
     gen_puzzle_parser = subparsers.add_parser('gen-puzzle', help='Generate a crossword puzzle')
     # In the future could have min/max letters per cell
@@ -88,6 +94,14 @@ def main():
         results = join_words(word_lists, args.length)
         for result in results[:args.max_results]:
             print(f"{'|'.join(result.words)} (score: {result.score:.4f})")
+    elif args.command == 'draggable':
+        from .draggable import make_draggable_svg
+        word_lists = []
+        for filename in args.files:
+            with open(filename, 'r') as f:
+                words = [line.strip() for line in f if line.strip()]
+                word_lists.append(words)
+        print(make_draggable_svg(word_lists))
     else:
         # might only happen in development when a new subcommand is added but not handled yet
         parser.print_help()
