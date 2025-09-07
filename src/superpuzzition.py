@@ -41,8 +41,9 @@ def find_superpuzzitions(
 
 	results: list[SuperpuzzitionResult] = []
 
-	from sentence_transformers import SentenceTransformer
-	model = SentenceTransformer("all-MiniLM-L6-v2")
+	if len(target_patterns) > 1:
+		from sentence_transformers import SentenceTransformer
+		model = SentenceTransformer("all-MiniLM-L6-v2")
 
 	target_length_range = range(min_length if min_length is not None else 1, (max_length if max_length is not None else 10000) + 1)
 	tp = target_position # needed for inner loop to avoid overwriting variable
