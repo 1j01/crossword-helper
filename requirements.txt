@@ -1,1 +1,2 @@
 sentence-transformers==5.1.0
+nltk==3.9.1
