@@ -6,6 +6,7 @@ from src.dictionary import load_words
 from .generate_puzzle import generate_puzzle
 from .superpuzzition import find_superpuzzitions
 from .render import render_grid_ascii, render_grid_html, render_grid_svg
+from .drop_off_puzzle import generate_drop_off_puzzle, drop_off_rows_to_cells
 
 def main():
     parser = argparse.ArgumentParser(description='Crossword Helper CLI')
@@ -63,6 +64,12 @@ def main():
     gen_puzzle_parser.add_argument('--max-width', type=int, default=15, help='Maximum grid width (default: 15)')
     gen_puzzle_parser.add_argument('--max-height', type=int, default=15, help='Maximum grid height (default: 15)')
 
+    # gen-drop-off subcommand
+    gen_drop_off_parser = subparsers.add_parser('gen-drop-off', help='Generate a drop-off puzzle')
+    gen_drop_off_parser.add_argument('--min-word-length', type=int, default=3, help='Minimum length for the shortest word in each row (default: 3)')
+    gen_drop_off_parser.add_argument('--format', type=str, choices=['ascii', 'html', 'svg'], default='ascii', help='Output format (default: ascii)')
+    gen_drop_off_parser.add_argument('key_words', nargs='+', type=str, help='Key words of equal length to spell out in columns')
+
     args = parser.parse_args()
 
     logging.basicConfig(level=args.loglevel)
@@ -102,6 +109,18 @@ def main():
                 words = [line.strip() for line in f if line.strip()]
                 word_lists.append(words)
         print(make_draggable_svg(word_lists))
+    elif args.command == 'gen-drop-off':
+        rows = generate_drop_off_puzzle(args.key_words, args.min_word_length, words_by_length)
+        if rows is None:
+            print("No solution found for the given key words.")
+        else:
+            cells = drop_off_rows_to_cells(rows)
+            if args.format == 'ascii':
+                print(render_grid_ascii(cells))
+            elif args.format == 'html':
+                print(render_grid_html(cells))
+            elif args.format == 'svg':
+                print(render_grid_svg(cells))
     else:
         # might only happen in development when a new subcommand is added but not handled yet
         parser.print_help()
