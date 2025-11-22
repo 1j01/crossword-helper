@@ -26,10 +26,10 @@ def find_anagrams(word: str, words_by_length: dict[int, list[str]]) -> list[str]
     """Find all anagrams of the given word in the word list."""
     sorted_word = ''.join(sorted(word.lower()))
     target_length = len(word)
-    
+
     if target_length not in words_by_length:
         return []
-    
+
     anagrams = []
     for candidate in words_by_length[target_length]:
         if ''.join(sorted(candidate.lower())) == sorted_word:
@@ -109,8 +109,19 @@ def build_row_from_first_word(
     max_anagrams_per_step: int = 10
 ) -> list[DropOffRow]:
     """Build all possible rows starting from a given first word.
-    
+
     For each key letter, we try removing it and finding anagrams.
+    This generates all valid sequences of words where each word is an
+    anagram of the previous word minus one of the key letters.
+
+    Args:
+        first_word: The starting word for the row
+        key_letters: List of letters to drop in sequence (one per step)
+        words_by_length: Dictionary of words organized by length
+        max_anagrams_per_step: Maximum number of anagrams to consider at each step
+
+    Returns:
+        List of all possible valid rows starting from first_word
     """
     # We'll use recursive search to find all valid sequences
     def search(current_word: str, remaining_keys: list[str], words_so_far: list[str], dropped_so_far: list[str]) -> list[DropOffRow]:
