@@ -108,6 +108,39 @@ python -m src.cli superpuzzition --length 5 a.eh a.ss
 ```
 `.` is a placeholder for a single letter.
 
+### `gen-drop-off` command
+
+To generate a drop-off puzzle, run:
+```bash
+python -m src.cli gen-drop-off CAT DOG
+```
+
+Drop-off puzzles are a type of word puzzle where:
+- Each row contains a series of words, with each word using one fewer letter than the previous
+- The letter that is dropped is placed between the words
+- The columns containing these dropped letters spell out specific key words vertically
+- There are bars between rows everywhere except in these special columns
+
+See help for more options:
+```bash
+python -m src.cli gen-drop-off --help
+```
+
+Example output (ASCII format):
+```
+U P D O C C D O U P D P O U|
+- - - - -   - - - -   - - - 
+Z O E A S A Z O E S O S Z E|
+- - - - -   - - - -   - - - 
+U T A G E T A U G E G A U E|
+- - - - - - - - - - - - - -
+```
+
+In this puzzle:
+- Column 6 spells "CAT" (the dropped letters C, A, T)
+- Column 11 spells "DOG" (the dropped letters D, O, G)
+- Each row shows words getting shorter: UPDOC → DOUP → POU
+
 ## Possible Improvements
 
 These are not necessarily planned features, but just ideas.
