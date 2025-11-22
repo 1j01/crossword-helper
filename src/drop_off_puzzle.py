@@ -8,7 +8,6 @@ except these columns.
 """
 
 import logging
-from collections import defaultdict
 from dataclasses import dataclass
 from typing import Optional
 
@@ -42,7 +41,10 @@ def find_words_containing_letters(letters: str, min_length: int, words_by_length
     """Find words containing all the given letters, with length >= min_length."""
     required_letters = set(letters.lower())
     candidates = []
-    
+
+    if not words_by_length:
+        return []
+
     for length in range(min_length, max(words_by_length.keys()) + 1):
         if length not in words_by_length:
             continue
@@ -50,7 +52,7 @@ def find_words_containing_letters(letters: str, min_length: int, words_by_length
             word_letters = set(word.lower())
             if required_letters.issubset(word_letters):
                 candidates.append(word)
-    
+
     return candidates
 
 
@@ -258,16 +260,15 @@ def generate_drop_off_puzzle(
 
 def drop_off_rows_to_cells(rows: list[DropOffRow]) -> list[Cell]:
     """Convert drop-off puzzle rows to Cell objects for rendering.
-    
+
     Args:
         rows: List of DropOffRow objects
-    
+
     Returns:
         List of Cell objects with appropriate bars set
     """
     cells = []
-    num_key_words = len(rows[0].dropped_letters) if rows else 0
-    
+
     for row_idx, row in enumerate(rows):
         col_idx = 0
         
