@@ -287,13 +287,9 @@ def drop_off_rows_to_cells(rows: list[DropOffRow]) -> list[Cell]:
                 cells.append(cell)
                 col_idx += 1
     
-    # Set bars
-    # There should be bars at the bottom of all cells except in the columns with dropped letters
-    # First, find which columns have the dropped letters
-    dropped_letter_columns = set()
-    
     # The dropped letters appear after each word except the last
     # Calculate their positions
+    dropped_letter_columns = set()
     col_idx = 0
     for word_idx, word in enumerate(rows[0].words):
         col_idx += len(word)
@@ -303,14 +299,14 @@ def drop_off_rows_to_cells(rows: list[DropOffRow]) -> list[Cell]:
     
     # Set bars for all cells
     for cell in cells:
-        x = cell.position[0]
+        x, y = cell.position
         
         # Bar on the right if the right border is the border of a dropped letter column
         is_before_dropped_column = (x + 1 in dropped_letter_columns)
         is_in_dropped_column = (x in dropped_letter_columns)
         cell.barRight = is_before_dropped_column or is_in_dropped_column
         
-        # Bar on the bottom everywhere except in dropped letter columns
-        cell.barBottom = (x not in dropped_letter_columns)
+        # Bar on the bottom everywhere except in dropped letter columns (and not the bottom of the grid)
+        cell.barBottom = (x not in dropped_letter_columns) and y < len(rows) - 1
     
     return cells
