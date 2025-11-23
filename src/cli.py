@@ -110,21 +110,17 @@ def main():
                 word_lists.append(words)
         print(make_draggable_svg(word_lists))
     elif args.command == 'gen-drop-off':
-        try:
-            rows = generate_drop_off_puzzle(args.key_words, args.min_word_length, words_by_length)
-        except ValueError as e:
-            print(f"Error: {e}")
+        rows = generate_drop_off_puzzle(args.key_words, args.min_word_length, words_by_length)
+        if rows is None:
+            logging.error("No solution found for the given key words.")
         else:
-            if rows is None:
-                print("No solution found for the given key words.")
-            else:
-                cells = drop_off_rows_to_cells(rows)
-                if args.format == 'ascii':
-                    print(render_grid_ascii(cells))
-                elif args.format == 'html':
-                    print(render_grid_html(cells))
-                elif args.format == 'svg':
-                    print(render_grid_svg(cells))
+            cells = drop_off_rows_to_cells(rows)
+            if args.format == 'ascii':
+                print(render_grid_ascii(cells))
+            elif args.format == 'html':
+                print(render_grid_html(cells))
+            elif args.format == 'svg':
+                print(render_grid_svg(cells))
     else:
         # might only happen in development when a new subcommand is added but not handled yet
         parser.print_help()
