@@ -268,6 +268,7 @@ def drop_off_rows_to_cells(rows: list[DropOffRow]) -> list[Cell]:
         List of Cell objects with appropriate bars set
     """
     cells = []
+    dropped_letter_columns = set()
 
     for row_idx, row in enumerate(rows):
         col_idx = 0
@@ -285,17 +286,8 @@ def drop_off_rows_to_cells(rows: list[DropOffRow]) -> list[Cell]:
                 dropped_letter = row.dropped_letters[word_idx]
                 cell = Cell(position=(col_idx, row_idx), letters=dropped_letter)
                 cells.append(cell)
+                dropped_letter_columns.add(col_idx)
                 col_idx += 1
-    
-    # The dropped letters appear after each word except the last
-    # Calculate their positions
-    dropped_letter_columns = set()
-    col_idx = 0
-    for word_idx, word in enumerate(rows[0].words):
-        col_idx += len(word)
-        if word_idx < len(rows[0].dropped_letters):
-            dropped_letter_columns.add(col_idx)
-            col_idx += 1
     
     # Set bars for all cells
     for cell in cells:
