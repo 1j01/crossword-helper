@@ -8,6 +8,14 @@ from .superpuzzition import find_superpuzzitions
 from .render import render_grid_ascii, render_grid_html, render_grid_svg
 from .drop_off_puzzle import generate_drop_off_puzzle, drop_off_rows_to_cells
 
+def output_puzzle(cells: list, format: str):
+    if format == 'ascii':
+        print(render_grid_ascii(cells))
+    elif format == 'html':
+        print(render_grid_html(cells))
+    elif format == 'svg':
+        print(render_grid_svg(cells))
+
 def main():
     parser = argparse.ArgumentParser(description='Crossword Helper CLI')
 
@@ -85,12 +93,7 @@ def main():
             print(f"{' / '.join(result.words)} (score: {result.score:.4f})")
     elif args.command == 'gen-puzzle':
         cells = generate_puzzle(words, args.letters_per_cell, args.max_word_length, args.min_chunk_usage, args.max_placement_attempts, args.max_words, args.max_width, args.max_height)
-        if args.format == 'ascii':
-            print(render_grid_ascii(cells))
-        elif args.format == 'html':
-            print(render_grid_html(cells))
-        elif args.format == 'svg':
-            print(render_grid_svg(cells))
+        output_puzzle(cells, args.format)
     elif args.command == 'join':
         from .join import join_words
         word_lists = []
@@ -115,12 +118,7 @@ def main():
             logging.error("No solution found for the given key words.")
         else:
             cells = drop_off_rows_to_cells(rows)
-            if args.format == 'ascii':
-                print(render_grid_ascii(cells))
-            elif args.format == 'html':
-                print(render_grid_html(cells))
-            elif args.format == 'svg':
-                print(render_grid_svg(cells))
+            output_puzzle(cells, args.format)
     else:
         # might only happen in development when a new subcommand is added but not handled yet
         parser.print_help()
