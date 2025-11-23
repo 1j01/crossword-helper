@@ -30,6 +30,14 @@ python -m src.cli gen-puzzle --letters-per-cell 3 --format svg >xw.svg
 
 Then open xw.svg in your browser or an SVG editor.
 
+To create an Across Lite compatible `.puz` file instead, provide an output path:
+
+```
+python -m src.cli gen-puzzle --format puz --output my-puzzle.puz
+```
+
+The generated `.puz` file includes placeholder clues that indicate the entry numbers and lengths so you can fill in real clues later in your favorite editor.
+
 See help for more options:
 ```bash
 python -m src.cli gen-puzzle --help
@@ -132,6 +140,12 @@ Sample output:
 Generated with:
 ```bash
 python -m src.cli gen-drop-off CAT DOG --min-word-length 6 --format svg >sample-drop-off.svg
+```
+
+Exporting drop-off puzzles to `.puz` works the same way:
+
+```
+python -m src.cli gen-drop-off CAT DOG --format puz --output drop-off.puz
 ```
 
 
