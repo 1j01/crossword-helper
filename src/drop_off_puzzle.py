@@ -305,10 +305,12 @@ def drop_off_rows_to_cells(rows: list[DropOffRow]) -> list[Cell]:
     for cell in cells:
         x, y = cell.position
         
-        # Bar on the right if this is the last cell in a row
-        # Find max x in this row
+        # Bar on the right if:
+        # 1. This is the last cell in a row, OR
+        # 2. This cell is immediately before a dropped letter column, OR
+        # 3. This cell is in a dropped letter column
         max_x_in_row = max(c.position[0] for c in cells if c.position[1] == y)
-        cell.barRight = (x == max_x_in_row)
+        cell.barRight = (x == max_x_in_row) or (x + 1 in dropped_letter_columns) or (x in dropped_letter_columns)
         
         # Bar on the bottom if:
         # 1. This is the last row, OR
