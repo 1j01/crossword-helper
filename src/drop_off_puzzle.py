@@ -12,6 +12,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 from .generate_puzzle import Cell
+from .render import render_grid_ascii
 
 
 @dataclass
@@ -235,26 +236,30 @@ def generate_drop_off_puzzle(
     # Generate candidates for each row (one row per key letter position)
     all_row_candidates = []
     for key_index in range(key_length):
-        logging.info(f"Generating candidates for row {key_index + 1}/{key_length}...")
+        row_name = f"{key_index + 1}/{key_length} ({'->'.join([kw[key_index].upper() for kw in key_words])})"
+        logging.info(f"Generating candidates for row {row_name}...")
         row_candidates = generate_row_candidates(
             key_words,
             key_index,
             min_word_length,
             words_by_length
         )
-        logging.info(f"  Found {len(row_candidates)} candidates for row {key_index + 1}")
+        logging.info(f"  Found {len(row_candidates)} candidates for row {row_name}")
+        if logging.getLogger().isEnabledFor(logging.INFO):
+            for i, candidate in enumerate(row_candidates[:5]):
+                logging.info(f"    Candidate {i + 1}: {render_grid_ascii(drop_off_rows_to_cells([candidate]))}")
         if not row_candidates:
-            logging.warning(f"  No candidates found for row {key_index + 1}")
+            logging.warning(f"  No candidates found for row {row_name}")
             return None
         all_row_candidates.append(row_candidates)
     
     # Find a set of rows that match in length
-    logging.info("Finding matching rows...")
+    logging.info("Finding rows that match in length...")
     result = find_matching_rows(all_row_candidates)
     if result:
-        logging.info(f"Found solution with {len(result)} rows")
+        logging.info(f"Found solution with matching row lengths: {[len(row.words) for row in result]}")
     else:
-        logging.info("No matching rows found")
+        logging.info("No matching set of row lengths found")
     return result
 
 
