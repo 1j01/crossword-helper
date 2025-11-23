@@ -303,22 +303,14 @@ def drop_off_rows_to_cells(rows: list[DropOffRow]) -> list[Cell]:
     
     # Set bars for all cells
     for cell in cells:
-        x, y = cell.position
+        x = cell.position[0]
         
-        # Bar on the right if:
-        # 1. This is the last cell in a row, OR
-        # 2. This cell is immediately before a dropped letter column, OR
-        # 3. This cell is in a dropped letter column
-        max_x_in_row = max(c.position[0] for c in cells if c.position[1] == y)
-        is_last_cell_in_row = (x == max_x_in_row)
+        # Bar on the right if the right border is the border of a dropped letter column
         is_before_dropped_column = (x + 1 in dropped_letter_columns)
         is_in_dropped_column = (x in dropped_letter_columns)
-        cell.barRight = is_last_cell_in_row or is_before_dropped_column or is_in_dropped_column
+        cell.barRight = is_before_dropped_column or is_in_dropped_column
         
-        # Bar on the bottom if:
-        # 1. This is the last row, OR
-        # 2. This column is NOT a dropped letter column
-        max_y = max(c.position[1] for c in cells)
-        cell.barBottom = (y == max_y) or (x not in dropped_letter_columns)
+        # Bar on the bottom everywhere except in dropped letter columns
+        cell.barBottom = (x not in dropped_letter_columns)
     
     return cells
