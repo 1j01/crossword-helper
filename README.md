@@ -126,20 +126,14 @@ See help for more options:
 python -m src.cli gen-drop-off --help
 ```
 
-Example output (ASCII format):
-```
-U P D O C C D O U P D P O U|
-- - - - -   - - - -   - - - 
-Z O E A S A Z O E S O S Z E|
-- - - - -   - - - -   - - - 
-U T A G E T A U G E G A U E|
-- - - - - - - - - - - - - -
+Sample output:
+![sample drop-off puzzle](sample-drop-off.svg)
+
+Generated with:
+```bash
+python -m src.cli gen-drop-off CAT DOG --min-word-length 6 --format svg >sample-drop-off.svg
 ```
 
-In this puzzle:
-- Column 6 spells "CAT" (the dropped letters C, A, T)
-- Column 11 spells "DOG" (the dropped letters D, O, G)
-- Each row shows words getting shorter: UPDOC → DOUP → POU
 
 ## Possible Improvements
 
