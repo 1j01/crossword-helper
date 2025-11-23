@@ -74,7 +74,7 @@ def main():
 
     logging.basicConfig(level=args.loglevel)
 
-    words, words_by_length = load_words(score_filter=0.5)
+    words, words_by_length = load_words(score_filter=args.min_quality)
 
     if args.command == 'superpuzzition':
         target_patterns = [re.compile(l.strip(), re.IGNORECASE) for l in args.letters]
