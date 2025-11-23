@@ -310,7 +310,10 @@ def drop_off_rows_to_cells(rows: list[DropOffRow]) -> list[Cell]:
         # 2. This cell is immediately before a dropped letter column, OR
         # 3. This cell is in a dropped letter column
         max_x_in_row = max(c.position[0] for c in cells if c.position[1] == y)
-        cell.barRight = (x == max_x_in_row) or (x + 1 in dropped_letter_columns) or (x in dropped_letter_columns)
+        is_last_cell_in_row = (x == max_x_in_row)
+        is_before_dropped_column = (x + 1 in dropped_letter_columns)
+        is_in_dropped_column = (x in dropped_letter_columns)
+        cell.barRight = is_last_cell_in_row or is_before_dropped_column or is_in_dropped_column
         
         # Bar on the bottom if:
         # 1. This is the last row, OR
