@@ -231,7 +231,11 @@ def generate_drop_off_puzzle(
     
     key_length = len(key_words[0])
     if not all(len(kw) == key_length for kw in key_words):
-        raise ValueError("All key words must have the same length")
+        max_len = max(len(kw) for kw in key_words)
+        logging.error("All key words must have the same length. Given key words:")
+        for word in key_words:
+            logging.error(f"  |{word.ljust(max_len)}| (length {len(word)})")
+        return None
     
     # Generate candidates for each row (one row per key letter position)
     all_row_candidates = []
