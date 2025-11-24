@@ -121,6 +121,13 @@ Drop-off puzzles are a type of word puzzle where:
 - The columns containing these dropped letters spell out specific key words vertically
 - There are bars between rows everywhere except in these special columns
 
+The command supports several options:
+
+- `--allow-partial`: Output partial puzzles when a perfect match cannot be found. Missing rows are represented as blank rows, and shorter words are padded with black cells on the left to align the dropped letter columns.
+- `--all`: Generate a puzzle that combines all row candidates into a single large puzzle, rather than selecting just one matching set of rows.
+- `--format {ascii,html,svg}`: Choose the output format (default: ascii)
+- `--min-word-length N`: Set the minimum length for the shortest word in each row (default: 3)
+
 See help for more options:
 ```bash
 python -m src.cli gen-drop-off --help
