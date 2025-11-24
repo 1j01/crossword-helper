@@ -174,15 +174,16 @@ def count_black_cells_needed(row_lengths: list[int], target_lengths: list[int]) 
         target_lengths: Target word lengths
     
     Returns:
-        Number of black cells needed (0 if lengths match)
+        Number of black cells needed (0 if lengths match), or float('inf') if 
+        the rows cannot be made to match (e.g., word count mismatch or words too long)
     """
     if len(row_lengths) != len(target_lengths):
-        return float('inf')
+        return float('inf')  # Different number of words - impossible to match
     
     black_cells = 0
     for row_len, target_len in zip(row_lengths, target_lengths):
         if row_len > target_len:
-            return float('inf')  # Can't fit
+            return float('inf')  # Word too long - cannot fit
         black_cells += target_len - row_len
     
     return black_cells
@@ -199,7 +200,9 @@ def find_matching_rows(
         allow_partial: If True, allow partial puzzles with padding or missing rows
     
     Returns:
-        A list of rows that match, or None if no match found
+        A list of rows that match, or None if no match found. When allow_partial=True,
+        some rows in the returned list may be None, representing blank rows that should
+        be filled with spaces in the final output.
     """
     if not all_row_candidates:
         return None
@@ -209,7 +212,7 @@ def find_matching_rows(
     
     if not non_empty_candidates:
         if allow_partial:
-            # Return empty rows for all positions
+            # Return None for each position to represent blank rows
             return [None] * len(all_row_candidates)
         return None
     
