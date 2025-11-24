@@ -3,6 +3,9 @@ from .generate_puzzle import Cell
 
 
 def render_grid_ascii(cells: list[Cell]):
+	if not cells:
+		return ""
+	
 	min_x = min(cell.position[0] for cell in cells)
 	min_y = min(cell.position[1] for cell in cells)
 	max_x = max(cell.position[0] for cell in cells)
@@ -29,6 +32,9 @@ def render_grid_ascii(cells: list[Cell]):
 	return output
 
 def render_grid_html(cells: list[Cell]) -> str:
+	if not cells:
+		return "<p>No puzzle to display</p>"
+	
 	min_x = min(cell.position[0] for cell in cells)
 	min_y = min(cell.position[1] for cell in cells)
 	max_x = max(cell.position[0] for cell in cells)
@@ -53,6 +59,9 @@ def render_grid_html(cells: list[Cell]) -> str:
 	return html
 
 def render_grid_svg(cells: list[Cell]) -> str:
+	if not cells:
+		return '<svg xmlns="http://www.w3.org/2000/svg" width="200" height="50"><text x="10" y="25">No puzzle to display</text></svg>'
+	
 	min_x = min(cell.position[0] for cell in cells)
 	min_y = min(cell.position[1] for cell in cells)
 	max_x = max(cell.position[0] for cell in cells)

@@ -166,64 +166,125 @@ def build_row_from_first_word(
     return search(first_word, key_letters, [first_word], [])
 
 
+def count_black_cells_needed(row_lengths: list[int], target_lengths: list[int]) -> int:
+    """Count the number of black cells needed to pad a row to match target lengths.
+    
+    Args:
+        row_lengths: Actual word lengths in the row
+        target_lengths: Target word lengths
+    
+    Returns:
+        Number of black cells needed (0 if lengths match)
+    """
+    if len(row_lengths) != len(target_lengths):
+        return float('inf')
+    
+    black_cells = 0
+    for row_len, target_len in zip(row_lengths, target_lengths):
+        if row_len > target_len:
+            return float('inf')  # Can't fit
+        black_cells += target_len - row_len
+    
+    return black_cells
+
+
 def find_matching_rows(
-    all_row_candidates: list[list[DropOffRow]]
+    all_row_candidates: list[list[DropOffRow]],
+    allow_partial: bool = False
 ) -> Optional[list[DropOffRow]]:
     """Find a set of rows that have matching word lengths across all positions.
     
     Args:
         all_row_candidates: List of candidate rows for each key index
+        allow_partial: If True, allow partial puzzles with padding or missing rows
     
     Returns:
         A list of rows that match, or None if no match found
     """
-    if not all_row_candidates or not all(all_row_candidates):
+    if not all_row_candidates:
+        return None
+    
+    # Filter out empty candidate lists
+    non_empty_candidates = [candidates for candidates in all_row_candidates if candidates]
+    
+    if not non_empty_candidates:
+        if allow_partial:
+            # Return empty rows for all positions
+            return [None] * len(all_row_candidates)
+        return None
+    
+    if not allow_partial and not all(all_row_candidates):
         return None
     
     # Try to find a combination where all rows have the same word lengths
-    # Start with the first row candidates and try to match others
-    for first_row in all_row_candidates[0]:
+    # Start with the first non-empty row candidates and try to match others
+    best_solution = None
+    best_black_cells = float('inf')
+    
+    for first_row in non_empty_candidates[0]:
         target_lengths = [len(word) for word in first_row.words]
         
         # Try to find matching rows for all other positions
-        selected_rows = [first_row]
-        match_found = True
+        selected_rows = []
+        total_black_cells = 0
+        solution_valid = True
         
-        for row_candidates in all_row_candidates[1:]:
-            # Find a row with matching lengths
-            matching_row = None
-            for candidate in row_candidates:
-                candidate_lengths = [len(word) for word in candidate.words]
-                if candidate_lengths == target_lengths:
-                    matching_row = candidate
+        for row_candidates in all_row_candidates:
+            if not row_candidates:
+                if allow_partial:
+                    # Missing row - will be represented as blank
+                    selected_rows.append(None)
+                else:
+                    solution_valid = False
                     break
-            
-            if matching_row is None:
-                match_found = False
-                break
-            
-            selected_rows.append(matching_row)
+            else:
+                # Find a row with matching or padable lengths
+                best_candidate = None
+                best_candidate_black_cells = float('inf')
+                
+                for candidate in row_candidates:
+                    candidate_lengths = [len(word) for word in candidate.words]
+                    black_cells = count_black_cells_needed(candidate_lengths, target_lengths)
+                    
+                    if black_cells < best_candidate_black_cells:
+                        best_candidate = candidate
+                        best_candidate_black_cells = black_cells
+                        if black_cells == 0:
+                            break  # Perfect match
+                
+                if best_candidate is None or (not allow_partial and best_candidate_black_cells > 0):
+                    solution_valid = False
+                    break
+                
+                selected_rows.append(best_candidate)
+                total_black_cells += best_candidate_black_cells
         
-        if match_found:
-            return selected_rows
+        if solution_valid and total_black_cells < best_black_cells:
+            best_solution = selected_rows
+            best_black_cells = total_black_cells
+            if best_black_cells == 0:
+                break  # Perfect solution found
     
-    return None
+    return best_solution
 
 
 def generate_drop_off_puzzle(
     key_words: list[str],
     min_word_length: int,
-    words_by_length: dict[int, list[str]]
-) -> Optional[list[DropOffRow]]:
+    words_by_length: dict[int, list[str]],
+    allow_partial: bool = False
+) -> Optional[list[Optional[DropOffRow]]]:
     """Generate a complete drop-off puzzle.
     
     Args:
         key_words: The words to spell out in columns (must be equal length)
         min_word_length: Minimum length for the shortest word in each row
         words_by_length: Dictionary of words organized by length
+        allow_partial: If True, allow partial puzzles with padding or missing rows
     
     Returns:
-        List of rows forming a complete puzzle, or None if no solution found
+        List of rows forming a complete puzzle, or None if no solution found.
+        When allow_partial=True, some rows may be None (representing blank rows).
     """
     # Validate that all key words have the same length
     if not key_words:
@@ -254,49 +315,94 @@ def generate_drop_off_puzzle(
                 logging.info(f"    Candidate {i + 1}: {render_grid_ascii(drop_off_rows_to_cells([candidate]))}")
         if not row_candidates:
             logging.warning(f"  No candidates found for row {row_name}")
-            return None
+            if not allow_partial:
+                return None
         all_row_candidates.append(row_candidates)
     
     # Find a set of rows that match in length
     logging.info("Finding rows that match in length...")
-    result = find_matching_rows(all_row_candidates)
+    result = find_matching_rows(all_row_candidates, allow_partial=allow_partial)
     if result:
-        logging.info(f"Found solution with matching row lengths: {[len(row.words) for row in result]}")
+        non_none_rows = [row for row in result if row is not None]
+        if non_none_rows:
+            logging.info(f"Found solution with matching row lengths: {[len(row.words) if row else 0 for row in result]}")
+        else:
+            logging.info("Found solution with all blank rows")
     else:
         logging.info("No matching set of row lengths found")
     return result
 
 
-def drop_off_rows_to_cells(rows: list[DropOffRow]) -> list[Cell]:
+def drop_off_rows_to_cells(rows: list[Optional[DropOffRow]]) -> list[Cell]:
     """Convert drop-off puzzle rows to Cell objects for rendering.
 
     Args:
-        rows: List of DropOffRow objects
+        rows: List of DropOffRow objects (can include None for blank rows)
 
     Returns:
         List of Cell objects with appropriate bars set
     """
+    if not rows:
+        return []
+    
+    # First pass: determine target word lengths from the first non-None row
+    target_word_lengths = None
+    for row in rows:
+        if row is not None:
+            target_word_lengths = [len(word) for word in row.words]
+            break
+    
+    if target_word_lengths is None:
+        # All rows are None - cannot create a meaningful puzzle
+        logging.warning("All rows are blank, no puzzle to display")
+        return []
+    
     cells = []
     dropped_letter_columns = set()
-
+    
+    # Calculate the column positions for dropped letters based on target lengths
+    dropped_letter_col_positions = []
+    col_pos = 0
+    for word_len in target_word_lengths[:-1]:
+        col_pos += word_len
+        dropped_letter_col_positions.append(col_pos)
+        col_pos += 1  # The dropped letter column itself
+    
     for row_idx, row in enumerate(rows):
         col_idx = 0
         
-        # Add cells for the words and dropped letters
-        for word_idx, word in enumerate(row.words):
-            # Add cells for this word
-            for char in word:
-                cell = Cell(position=(col_idx, row_idx), letters=char)
+        if row is None:
+            # Blank row - add space cells for the entire width
+            total_width = sum(target_word_lengths) + len(target_word_lengths) - 1
+            for x in range(total_width):
+                cell = Cell(position=(x, row_idx), letters=' ')
                 cells.append(cell)
-                col_idx += 1
-            
-            # Add a cell for the dropped letter if this isn't the last word
-            if word_idx < len(row.dropped_letters):
-                dropped_letter = row.dropped_letters[word_idx]
-                cell = Cell(position=(col_idx, row_idx), letters=dropped_letter)
-                cells.append(cell)
-                dropped_letter_columns.add(col_idx)
-                col_idx += 1
+        else:
+            # Calculate padding needed for each word
+            for word_idx, word in enumerate(row.words):
+                target_len = target_word_lengths[word_idx]
+                actual_len = len(word)
+                padding = target_len - actual_len
+                
+                # Add black cells as padding on the left
+                for _ in range(padding):
+                    cell = Cell(position=(col_idx, row_idx), letters='#')
+                    cells.append(cell)
+                    col_idx += 1
+                
+                # Add cells for this word
+                for char in word:
+                    cell = Cell(position=(col_idx, row_idx), letters=char)
+                    cells.append(cell)
+                    col_idx += 1
+                
+                # Add a cell for the dropped letter if this isn't the last word
+                if word_idx < len(row.dropped_letters):
+                    dropped_letter = row.dropped_letters[word_idx]
+                    cell = Cell(position=(col_idx, row_idx), letters=dropped_letter)
+                    cells.append(cell)
+                    dropped_letter_columns.add(col_idx)
+                    col_idx += 1
     
     # Set bars for all cells
     for cell in cells:
@@ -311,3 +417,54 @@ def drop_off_rows_to_cells(rows: list[DropOffRow]) -> list[Cell]:
         cell.barBottom = (x not in dropped_letter_columns) and y < len(rows) - 1
     
     return cells
+
+
+def generate_all_candidates_puzzle(
+    key_words: list[str],
+    min_word_length: int,
+    words_by_length: dict[int, list[str]],
+    max_candidates_per_row: int = 100
+) -> Optional[list[Optional[DropOffRow]]]:
+    """Generate a puzzle that combines all row candidates into a single large puzzle.
+    
+    Args:
+        key_words: The words to spell out in columns (must be equal length)
+        min_word_length: Minimum length for the shortest word in each row
+        words_by_length: Dictionary of words organized by length
+        max_candidates_per_row: Maximum number of candidates to include per row position
+    
+    Returns:
+        List of all row candidates combined, or None if no candidates found
+    """
+    # Validate that all key words have the same length
+    if not key_words:
+        return None
+    
+    key_length = len(key_words[0])
+    if not all(len(kw) == key_length for kw in key_words):
+        max_len = max(len(kw) for kw in key_words)
+        logging.error("All key words must have the same length. Given key words:")
+        for word in key_words:
+            logging.error(f"  |{word.ljust(max_len)}| (length {len(word)})")
+        return None
+    
+    # Generate candidates for each row (one row per key letter position)
+    all_rows = []
+    for key_index in range(key_length):
+        row_name = f"{key_index + 1}/{key_length} ({'->'.join([kw[key_index].upper() for kw in key_words])})"
+        logging.info(f"Generating candidates for row {row_name}...")
+        row_candidates = generate_row_candidates(
+            key_words,
+            key_index,
+            min_word_length,
+            words_by_length,
+            max_candidates=max_candidates_per_row
+        )
+        logging.info(f"  Found {len(row_candidates)} candidates for row {row_name}")
+        
+        if row_candidates:
+            all_rows.extend(row_candidates[:max_candidates_per_row])
+        else:
+            logging.warning(f"  No candidates found for row {row_name}")
+    
+    return all_rows if all_rows else None
