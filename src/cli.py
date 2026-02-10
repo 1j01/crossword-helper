@@ -1,4 +1,5 @@
 import argparse
+from collections import Counter
 import logging
 import re
 
@@ -99,6 +100,12 @@ def main():
     elif args.command == 'sub':
         letter_sequences = [letter_sequence.upper() for letter_sequence in args.letters]
         results = find_substitutions(words_by_length, letter_sequences)
+        
+        counts = Counter()
+        for result in results:
+            counts[result.words[0]] += 1
+        counts_logged = Counter()
+
         output_format = "console"
         # for result in results[:args.max_results]:
         for result in results:
@@ -132,6 +139,15 @@ def main():
                 # elif output_format == "console":
                 #     # not necessary
                 #     line = line.replace("\033[1m\033[0m", "")
+
+            # Emphasize groups of results that make different substitutions
+            # to the same base word
+            if counts[result.words[0]] > 1:
+                counts_logged[result.words[0]] += 1
+                line += f" ({counts_logged[result.words[0]]} of {counts[result.words[0]]})"
+            if counts[result.words[0]] > 2:
+                line += " ⭐"
+
             print(line)
     elif args.command == 'gen-puzzle':
         cells = generate_puzzle(words, args.letters_per_cell, args.max_word_length, args.min_chunk_usage, args.max_placement_attempts, args.max_words, args.max_width, args.max_height)
