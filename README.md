@@ -115,8 +115,12 @@ To find pairs of words that differ only by replacing "OP" with "OSP", run:
 python -m src.cli sub OP OSP
 ```
 
-This is useful for creating puzzles like [Writhing Exercise](https://crosshare.org/crosswords/mY7SW2jTNIaJANGEjUo8/writhing-exercise) by Girlcow (though it might miss some phonetic allowances as included in that puzzle), or [Choose-your-own-adventure](https://crosshare.org/crosswords/JvpFMaIl3lEDb8yQrwEa/choose-your-own-adventure) by Oregano.
-Those are two different puzzle types; I'll let you play them to see how they work.
+This is useful for creating puzzles of different sorts, such as:
+- Substitution-based puns as themers, as in [Writhing Exercise](https://crosshare.org/crosswords/mY7SW2jTNIaJANGEjUo8/writhing-exercise) by Girlcow. Note that the tool can miss some phonetic opportunities as displayed in that puzzle.
+- Rebusses superimposed with separate clues for each option, as in [Choose-your-own-adventure](https://crosshare.org/crosswords/JvpFMaIl3lEDb8yQrwEa/choose-your-own-adventure) by Oregano. The clues may be divided in this puzzle, but they're tied together with wordplay, which makes it very fun and artful.
+- Straight up schrodinger rebusses, as in [Home is where the heart is able to keep beating because it has everything it needs to thrive as an organ](https://crosshare.org/crosswords/2YSIvjV3zrrRrSBX3Lvq/home-is-where-the-heart-is-able-to-keep-beating-because-it-has-everything-it-needs-to-thrive-as-an-o) by myself. Here the clues are designed to apply to either option, perhaps helping to lead to an "aha" moment, if I weren't to tag it with "schrodinger" and tell you about it. (I didn't feel like this puzzle was strong enough that it would be that much of an "aha" moment anyways. If the clues are stretched *too* far trying to mean multiple things, it might end up being more of an "oh, so that's why these clues were so off" moment.)
+- Schrodinger without rebuses (hint: search for a single letter substitution (like "A E") or a substitution that matches more but only changes one letter (like "BA BE"))
+- Possibly more!
 
 Sample output:
 ```
