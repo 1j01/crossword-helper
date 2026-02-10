@@ -14,7 +14,7 @@ def powerset(iterable):
 
 class SubstitutionalResult(NamedTuple):
 	words: tuple[str, ...]
-	# score: float
+	highlights: tuple[tuple[tuple[int, int], ...], ...] = ()
 
 def find_substitutions(
 	words_by_length: dict[int, list[str]],
@@ -61,6 +61,8 @@ def find_substitutions(
 							new_word = new_word[:point] + seq + new_word[point+len(base_seq):]
 						other_words_that_must_exist.append(new_word)
 					if all(other_word in all_words_set for other_word in other_words_that_must_exist):
-						results.append(SubstitutionalResult((word, *other_words_that_must_exist)))
+						word_group = (word, *other_words_that_must_exist)
+						highlights = tuple(tuple((point, point+len(seq)) for point in substitution_points) for seq in letter_sequences)
+						results.append(SubstitutionalResult(word_group, highlights))
 
 	return results

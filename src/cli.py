@@ -99,10 +99,40 @@ def main():
     elif args.command == 'sub':
         letter_sequences = [letter_sequence.upper() for letter_sequence in args.letters]
         results = find_substitutions(words_by_length, letter_sequences)
+        output_format = "console"
         # for result in results[:args.max_results]:
         for result in results:
             # print(f"{' -> '.join(result.words)} (score: {result.score:.4f})")
-            print(f"{' -> '.join(result.words)}")
+            # print(f"{' -> '.join(result.words)}")
+            line = ""
+            for i, word in enumerate(result.words):
+                if i > 0:
+                    line += " -> "
+                used = 0
+                for highlight in result.highlights[i]:
+                    line += word[used:highlight[0]]
+                    to_highlight = word[highlight[0]:highlight[1]]
+                    if output_format == "markdown":
+                        line += f"**{to_highlight}**"
+                    elif output_format == "console":
+                        # green (too "addition"-coded; these are mutual/symmetrical substitutions, really)
+                        # line += f"\033[1;32m{to_highlight}\033[0m"
+                        # yellow (too bright/distinct, in my terminal, in my opinion; makes it hard to read the word)
+                        # line += f"\033[1;33m{to_highlight}\033[0m"
+                        # cyan (nice balance, and a color often used for generic highlighting, like selections)
+                        line += f"\033[1;36m{to_highlight}\033[0m"
+                        # bold
+                        # line += f"\033[1m{to_highlight}\033[0m"
+                    else:
+                        line += to_highlight
+                    used = highlight[1]
+                line += word[used:]
+                if output_format == "markdown":
+                    line = line.replace("****", "")
+                # elif output_format == "console":
+                #     # not necessary
+                #     line = line.replace("\033[1m\033[0m", "")
+            print(line)
     elif args.command == 'gen-puzzle':
         cells = generate_puzzle(words, args.letters_per_cell, args.max_word_length, args.min_chunk_usage, args.max_placement_attempts, args.max_words, args.max_width, args.max_height)
         output_puzzle(cells, args.format)
