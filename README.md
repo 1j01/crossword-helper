@@ -108,6 +108,49 @@ python -m src.cli superpuzzition --length 5 a.eh a.ss
 ```
 `.` is a placeholder for a single letter.
 
+### `sub` command
+
+To find pairs of words that differ by a certain substitution, run:
+```bash
+python -m src.cli sub OP OSP
+```
+
+Sample output:
+```
+$ python -m src.cli sub A E I O U
+THA -> THE -> THI -> THO -> THU
+SAS -> SES -> SIS -> SOS -> SUS
+...
+PAT -> PET -> PIT -> POT -> PUT
+...
+UNAS -> UNES -> UNIS -> UNOS -> UNUS
+RENA -> RENE -> RENI -> RENO -> RENU
+PERA -> PERE -> PERI -> PERO -> PERU
+PAPS -> PEPS -> PIPS -> POPS -> PUPS
+ORAS -> ORES -> ORIS -> OROS -> ORUS
+MADS -> MEDS -> MIDS -> MODS -> MUDS
+HAPS -> HEPS -> HIPS -> HOPS -> HUPS
+DANS -> DENS -> DINS -> DONS -> DUNS
+CATE -> CETE -> CITE -> COTE -> CUTE
+BORA -> BORE -> BORI -> BORO -> BORU
+BADS -> BEDS -> BIDS -> BODS -> BUDS
+...
+BAGS -> BEGS -> BIGS -> BOGS -> BUGS
+TORAS -> TORES -> TORIS -> TOROS -> TORUS
+MASSY -> MESSY -> MISSY -> MOSSY -> MUSSY
+PACKS -> PECKS -> PICKS -> POCKS -> PUCKS
+MATES -> METES -> MITES -> MOTES -> MUTES
+LONGA -> LONGE -> LONGI -> LONGO -> LONGU
+CHANG -> CHENG -> CHING -> CHONG -> CHUNG
+BALLS -> BELLS -> BILLS -> BOLLS -> BULLS
+SHORTA -> SHORTE -> SHORTI -> SHORTO -> SHORTU
+PATTER -> PETTER -> PITTER -> POTTER -> PUTTER
+PATTED -> PETTED -> PITTED -> POTTED -> PUTTED
+MASSES -> MESSES -> MISSES -> MOSSES -> MUSSES
+BLANDER -> BLENDER -> BLINDER -> BLONDER -> BLUNDER
+PATTING -> PETTING -> PITTING -> POTTING -> PUTTING
+```
+
 ### `gen-drop-off` command
 
 To generate a drop-off puzzle, run:

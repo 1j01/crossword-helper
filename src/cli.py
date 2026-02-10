@@ -4,6 +4,7 @@ import re
 
 from src.dictionary import load_words
 from .generate_puzzle import generate_puzzle
+from .substitution import find_substitutions
 from .superpuzzition import find_superpuzzitions
 from .render import render_grid_ascii, render_grid_html, render_grid_svg
 from .drop_off_puzzle import generate_drop_off_puzzle, drop_off_rows_to_cells
@@ -45,6 +46,10 @@ def main():
     superpuzzition_parser.add_argument('--position', type=int, default=None, help='Position to compare (0-based, optional; can be negative to look from the end, -1 being the last letter)')
     superpuzzition_parser.add_argument('--max-results', type=int, default=100, help='Maximum number of pairs to return (default: 100)')
     superpuzzition_parser.add_argument('letters', nargs='+', type=str, help='Regular expression patterns for each superimposed grid to match words against')
+
+    # sub subcommand
+    sub_parser = subparsers.add_parser('sub', help='Find word pairs that differ by a certain substitution')
+    sub_parser.add_argument('letters', nargs='+', type=str, help='')
 
     # join subcommand
     # experimental, might become part of word search
@@ -91,6 +96,13 @@ def main():
         results = find_superpuzzitions(words_by_length, min_length, max_length, target_patterns, args.position, args.exactly_one_different)
         for result in results[:args.max_results]:
             print(f"{' / '.join(result.words)} (score: {result.score:.4f})")
+    elif args.command == 'sub':
+        letter_sequences = [letter_sequence.upper() for letter_sequence in args.letters]
+        results = find_substitutions(words_by_length, letter_sequences)
+        # for result in results[:args.max_results]:
+        for result in results:
+            # print(f"{' -> '.join(result.words)} (score: {result.score:.4f})")
+            print(f"{' -> '.join(result.words)}")
     elif args.command == 'gen-puzzle':
         cells = generate_puzzle(words, args.letters_per_cell, args.max_word_length, args.min_chunk_usage, args.max_placement_attempts, args.max_words, args.max_width, args.max_height)
         output_puzzle(cells, args.format)
