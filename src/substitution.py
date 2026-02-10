@@ -31,15 +31,16 @@ def find_substitutions(
 	for length, words in words_by_length.items():
 		for word in words:
 			if letter_sequences[0] in word:
-				# try different positions
-				# in case of multiple occurrences in a word
-				for i in range(len(word) - len(letter_sequences[0]) + 1):
-					if word[i:i+len(letter_sequences[0])] == letter_sequences[0]:
-						prefix = word[:i]
-						suffix = word[i+len(letter_sequences[0]):]
+				occurances = (i for i in range(len(word) - len(letter_sequences[0]) + 1)
+				  if word[i:i+len(letter_sequences[0])] == letter_sequences[0]
+				)
+				# TODO: handle multiple substitutions in one word [optionally]
+				for i in occurances:
+					prefix = word[:i]
+					suffix = word[i+len(letter_sequences[0]):]
 
-						other_words_that_must_exist = [prefix + seq + suffix for seq in letter_sequences[1:]]
-						if all(other_word in all_words_set for other_word in other_words_that_must_exist):
-							results.append(SubstitutionalResult((word, *other_words_that_must_exist)))
+					other_words_that_must_exist = [prefix + seq + suffix for seq in letter_sequences[1:]]
+					if all(other_word in all_words_set for other_word in other_words_that_must_exist):
+						results.append(SubstitutionalResult((word, *other_words_that_must_exist)))
 
 	return results
