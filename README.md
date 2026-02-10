@@ -110,10 +110,13 @@ python -m src.cli superpuzzition --length 5 a.eh a.ss
 
 ### `sub` command
 
-To find pairs of words that differ by a certain substitution, run:
+To find pairs of words that differ only by replacing "OP" with "OSP", run:
 ```bash
 python -m src.cli sub OP OSP
 ```
+
+This is useful for creating puzzles like [Writhing Exercise](https://crosshare.org/crosswords/mY7SW2jTNIaJANGEjUo8/writhing-exercise) by Girlcow (though it might miss some phonetic allowances as included in that puzzle), or [Choose-your-own-adventure](https://crosshare.org/crosswords/JvpFMaIl3lEDb8yQrwEa/choose-your-own-adventure) by Oregano.
+Those are two different puzzle types; I'll let you play them to see how they work.
 
 Sample output:
 ```
@@ -123,32 +126,25 @@ SAS -> SES -> SIS -> SOS -> SUS
 ...
 PAT -> PET -> PIT -> POT -> PUT
 ...
-UNAS -> UNES -> UNIS -> UNOS -> UNUS
-RENA -> RENE -> RENI -> RENO -> RENU
-PERA -> PERE -> PERI -> PERO -> PERU
-PAPS -> PEPS -> PIPS -> POPS -> PUPS
-ORAS -> ORES -> ORIS -> OROS -> ORUS
-MADS -> MEDS -> MIDS -> MODS -> MUDS
-HAPS -> HEPS -> HIPS -> HOPS -> HUPS
-DANS -> DENS -> DINS -> DONS -> DUNS
-CATE -> CETE -> CITE -> COTE -> CUTE
-BORA -> BORE -> BORI -> BORO -> BORU
-BADS -> BEDS -> BIDS -> BODS -> BUDS
-...
-BAGS -> BEGS -> BIGS -> BOGS -> BUGS
 TORAS -> TORES -> TORIS -> TOROS -> TORUS
 MASSY -> MESSY -> MISSY -> MOSSY -> MUSSY
 PACKS -> PECKS -> PICKS -> POCKS -> PUCKS
-MATES -> METES -> MITES -> MOTES -> MUTES
-LONGA -> LONGE -> LONGI -> LONGO -> LONGU
-CHANG -> CHENG -> CHING -> CHONG -> CHUNG
-BALLS -> BELLS -> BILLS -> BOLLS -> BULLS
-SHORTA -> SHORTE -> SHORTI -> SHORTO -> SHORTU
-PATTER -> PETTER -> PITTER -> POTTER -> PUTTER
-PATTED -> PETTED -> PITTED -> POTTED -> PUTTED
-MASSES -> MESSES -> MISSES -> MOSSES -> MUSSES
-BLANDER -> BLENDER -> BLINDER -> BLONDER -> BLUNDER
-PATTING -> PETTING -> PITTING -> POTTING -> PUTTING
+...
+```
+
+It also highlights groups of results that make different substitutions to the same base word:
+```
+$ python -m src.cli sub T S
+...
+BURT -> BURS
+BORT -> BORS
+BLAT -> BLAS
+BITT -> BIST (1 of 2)
+BITT -> BITS (2 of 2)
+BATT -> BAST (1 of 3) ⭐
+BATT -> BATS (2 of 3) ⭐
+BATT -> BASS (3 of 3) ⭐
+...
 ```
 
 ### `gen-drop-off` command
