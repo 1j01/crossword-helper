@@ -82,6 +82,8 @@ def main():
     gen_drop_off_parser = subparsers.add_parser('gen-drop-off', help='Generate a drop-off puzzle')
     gen_drop_off_parser.add_argument('--min-word-length', type=int, default=3, help='Minimum length for the shortest word in each row (default: 3)')
     gen_drop_off_parser.add_argument('--format', type=str, choices=['ascii', 'html', 'svg'], default='ascii', help='Output format (default: ascii)')
+    gen_drop_off_parser.add_argument('--all', action='store_true', help='Output a puzzle that combines all row candidates into a single large puzzle')
+    gen_drop_off_parser.add_argument('--allow-partial', action='store_true', help='Allow partial puzzles with missing or padded rows')
     gen_drop_off_parser.add_argument('key_words', nargs='+', type=str, help='Key words of equal length to spell out in columns')
 
     args = parser.parse_args()
@@ -171,7 +173,11 @@ def main():
                 word_lists.append(words)
         print(make_draggable_svg(word_lists))
     elif args.command == 'gen-drop-off':
-        rows = generate_drop_off_puzzle(args.key_words, args.min_word_length, words_by_length)
+        if args.all:
+            from .drop_off_puzzle import generate_all_candidates_puzzle
+            rows = generate_all_candidates_puzzle(args.key_words, args.min_word_length, words_by_length)
+        else:
+            rows = generate_drop_off_puzzle(args.key_words, args.min_word_length, words_by_length, allow_partial=args.allow_partial)
         if rows is None:
             logging.error("No solution found for the given key words.")
         else:
