@@ -53,7 +53,7 @@ E,V,I,C,T,E,D
 L,A,C,K,I,N,G
 	"""
 
-	grid = [line.split(",") for line in DATA.strip().splitlines()]
+	grid = [line.split(str(",")) for line in DATA.strip().splitlines()]
 	found = find_words_in_grid(grid)
 	print(f"Found {len(found)} words reading down the grid while making arbitrary lateral jumps:")
 	for word in found:
